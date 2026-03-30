@@ -6447,9 +6447,8 @@
             <div style="text-align:center;padding:1rem 0">
               <div style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.25rem">Saad Alharbi</div>
               <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem">Pharmacy Director · Buraidah Central Hospital</div>
-              <div style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.25rem">Meshail Alharbi</div>
-              <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Co-developer</div>
-              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a6a525b56495b5652537a5d575b535614595557">[email&#160;protected]</a>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.25rem">Meshail Alharbi — Co-developer</div>
+              <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem">Consultant Clinical Pharmacist (NGHA)</div>
             </div>
           </div>
           <div class="card">
@@ -6469,7 +6468,7 @@
           <ul class="clinical-list">
             <li>This tool reflects the <strong>ADA Standards of Care 2026</strong> — the most current edition available at time of development</li>
             <li>Clinical guidelines are updated annually — users are encouraged to verify with the latest ADA Standards when significant time has elapsed</li>
-            <li>For feedback, corrections, or suggestions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a3a020b06190b0602032a0d070b030644090507">[email&#160;protected]</a></li>
+            <li>For feedback, corrections, or suggestions: Phalsalhi@gmail.com</li>
           </ul>
         </div>
 
@@ -6481,7 +6480,7 @@
   </main>
 </div><!-- /app-body -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // TAB SYSTEM
 const tabBtns = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
@@ -6549,55 +6548,4 @@ const searchResults = document.getElementById('searchResults');
 const searchResultsList = document.getElementById('searchResultsList');
 const searchTermEl = document.getElementById('searchTerm');
 
-searchInput.addEventListener('input', function() {
-  const query = this.value.trim().toLowerCase();
-  if (query.length < 2) { searchResults.classList.remove('visible'); return; }
-  searchTermEl.textContent = this.value.trim();
-  const seen = new Set();
-  const matches = searchData.filter(item => {
-    if (item.text.includes(query) || item.title.toLowerCase().includes(query)) {
-      const key = item.sectionId + item.title;
-      if (!seen.has(key)) { seen.add(key); return true; }
-    }
-    return false;
-  }).slice(0, 8);
-  if (matches.length === 0) {
-    searchResultsList.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem;padding:0.5rem;">No results found.</div>';
-  } else {
-    searchResultsList.innerHTML = matches.map(m => {
-      const excerpt = getExcerpt(m.text, query);
-      return '<div class="search-result-item" onclick="goToResult(\''+m.tabId+'\',\''+m.sectionId+'\')"><div class="search-result-section">'+m.tabLabel+'</div><div class="search-result-title">'+highlightText(m.title, query)+'</div><div class="search-result-excerpt">'+highlightText(excerpt, query)+'</div></div>';
-    }).join('');
-  }
-  searchResults.classList.add('visible');
-});
-
-function getExcerpt(text, query) {
-  const idx = text.indexOf(query);
-  if (idx === -1) return text.slice(0, 120) + '...';
-  const start = Math.max(0, idx - 40);
-  const end = Math.min(text.length, idx + query.length + 80);
-  return (start > 0 ? '...' : '') + text.slice(start, end) + (end < text.length ? '...' : '');
-}
-
-function highlightText(text, query) {
-  if (!query) return text;
-  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp('(' + escaped + ')', 'gi');
-  return text.replace(re, '<span class="search-highlight">$1</span>');
-}
-
-function goToResult(tabId, sectionId) {
-  activateTab(tabId);
-  searchResults.classList.remove('visible');
-  searchInput.value = '';
-  setTimeout(() => {
-    const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, 100);
-}
-
-activateTab('overview');
-</script>
-</body>
-</html>
+searchInput.addEventListe
