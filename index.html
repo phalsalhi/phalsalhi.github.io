@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIV Management — Concise Clinical Reference</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg1:#ffffff;--bg2:#f5f4f0;--t1:#1a1a18;--t2:#6b6a65;--t3:#9c9a92;
+--bd1:rgba(0,0,0,0.12);--bd2:rgba(0,0,0,0.22);--bd3:rgba(0,0,0,0.35);
+--f:system-ui,-apple-system,sans-serif;
+}
+@media(prefers-color-scheme:dark){
+:root{--bg1:#1e1e1c;--bg2:#2a2a28;--t1:#e8e6df;--t2:#9c9a92;--t3:#6b6a65;
+--bd1:rgba(255,255,255,0.10);--bd2:rgba(255,255,255,0.18);--bd3:rgba(255,255,255,0.30);}
+}
+body{font-family:var(--f);background:var(--bg2);color:var(--t1);min-height:100vh;padding:1.25rem 1rem}
+.page{max-width:820px;margin:0 auto}
+h1{font-size:20px;font-weight:500;margin-bottom:3px}
+.tagline{font-size:12px;color:var(--t2);margin-bottom:1.25rem}
+.source-note{font-size:11px;color:var(--t3);margin-bottom:1rem;font-style:italic}
+hr.div{border:none;border-top:1.5px solid #3B8BD4;margin-bottom:1.25rem}
+
+/* NAV */
+.nav-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.nb{font-size:11px;padding:4px 9px;border:0.5px solid var(--bd2);border-radius:5px;
+background:var(--bg2);color:var(--t2);cursor:pointer;transition:all .12s;font-family:var(--f)}
+.nb:hover{background:var(--bg1);color:var(--t1)}
+.nb.active{background:var(--bg1);border-color:var(--bd3);color:var(--t1);font-weight:500}
+.nb.cat-dx{border-left:3px solid #888}
+.nb.cat-art{border-left:3px solid #3B8BD4}
+.nb.cat-oi{border-left:3px solid #1D9E75}
+.nb.cat-special{border-left:3px solid #8B5CF6}
+.nb.cat-coinfect{border-left:3px solid #EF9F27}
+.nb.cat-fail{border-left:3px solid #E24B4A}
+.nb.cat-preg{border-left:3px solid #D4537E}
+.nb.cat-iris{border-left:3px solid #EF9F27}
+.nb.cat-cv{border-left:3px solid #3B8BD4}
+.nb.cat-vax{border-left:3px solid #1D9E75}
+.nb.cat-adh{border-left:3px solid #888}
+.nb.cat-mem{border-left:3px solid #8B5CF6}
+.nb.cat-prep{border-left:3px solid #0891B2}
+.nb.cat-pep{border-left:3px solid #DC2626}
+
+/* PANEL */
+.panel{background:var(--bg1);border:0.5px solid var(--bd1);border-radius:12px;padding:1.1rem;display:none}
+.panel.active{display:block}
+.ph{display:flex;align-items:flex-start;gap:9px;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:0.5px solid var(--bd1)}
+.badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.ptitle{font-size:15px;font-weight:500;color:var(--t1)}
+.psub{font-size:12px;color:var(--t2);margin-top:2px}
+
+/* BADGES */
+.b-gray{background:#E8E6DF;color:#3d3b36}
+.b-blue{background:#B5D4F4;color:#0C447C}
+.b-amber{background:#FAC775;color:#633806}
+.b-purple{background:#CECBF6;color:#3C3489}
+.b-teal{background:#9FE1CB;color:#085041}
+.b-red{background:#F7C1C1;color:#791F1F}
+.b-dark{background:#444;color:#eee}
+.b-pink{background:#F4C0D1;color:#72243E}
+.b-green{background:#C0DD97;color:#27500A}
+.b-cyan{background:#A5E6F3;color:#0C5A6E}
+@media(prefers-color-scheme:dark){
+.b-gray{background:#444441;color:#D3D1C7}.b-blue{background:#0C447C;color:#B5D4F4}
+.b-amber{background:#633806;color:#FAC775}.b-purple{background:#3C3489;color:#CECBF6}
+.b-teal{background:#085041;color:#9FE1CB}.b-red{background:#791F1F;color:#F7C1C1}
+.b-dark{background:#222;color:#ccc}.b-pink{background:#72243E;color:#F4C0D1}
+.b-green{background:#27500A;color:#C0DD97}.b-cyan{background:#0C5A6E;color:#A5E6F3}
+}
+
+/* CARDS */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:7px;margin-bottom:.7rem}
+.card{background:var(--bg2);border-radius:7px;padding:.65rem;border:0.5px solid var(--bd1)}
+.cl{font-size:10px;color:var(--t3);font-weight:500;margin-bottom:3px;text-transform:uppercase;letter-spacing:.03em}
+.cv{font-size:12px;color:var(--t1);line-height:1.45}
+.card.acc-red{border-left:2.5px solid #E24B4A}
+.card.acc-amber{border-left:2.5px solid #EF9F27}
+.card.acc-teal{border-left:2.5px solid #1D9E75}
+.card.acc-blue{border-left:2.5px solid #3B8BD4}
+.card.acc-gray{border-left:2.5px solid #888}
+.card.acc-pink{border-left:2.5px solid #D4537E}
+.card.acc-purple{border-left:2.5px solid #7F77DD}
+
+/* TAGS */
+.tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;margin:2px 2px 2px 0;font-weight:500}
+.ti{background:#E6F1FB;color:#185FA5}.tt{background:#EAF3DE;color:#3B6D11}
+.tw{background:#FCEBEB;color:#A32D2D}.tn{background:#EEEDFE;color:#534AB7}
+.tp{background:#FBEAF0;color:#72243E}
+@media(prefers-color-scheme:dark){
+.ti{background:#0C447C;color:#B5D4F4}.tt{background:#27500A;color:#C0DD97}
+.tw{background:#791F1F;color:#F7C1C1}.tn{background:#3C3489;color:#CECBF6}
+.tp{background:#72243E;color:#F4C0D1}
+}
+
+/* BLOCKS */
+.bl{margin-bottom:.65rem}
+.bl:last-child{margin-bottom:0}
+.blab{font-size:10px;font-weight:500;color:var(--t3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.03em}
+.bbod{font-size:12px;color:var(--t1);line-height:1.55}
+
+/* PILLS */
+.pr{display:flex;flex-wrap:wrap;gap:5px;margin:.25rem 0}
+.pill{font-size:11px;padding:2px 9px;border-radius:20px;border:0.5px solid var(--bd2);color:var(--t2);background:var(--bg2)}
+.pill.hi{background:#B5D4F4;color:#0C447C;border-color:#85B7EB}
+.pill.hi2{background:#9FE1CB;color:#085041;border-color:#5DCAA5}
+.pill.warn{background:#F7C1C1;color:#791F1F;border-color:#F09595}
+.pill.avoid{background:#F7C1C1;color:#791F1F;border-color:#F09595;text-decoration:line-through}
+.pill.pink{background:#F4C0D1;color:#72243E;border-color:#ED93B1}
+@media(prefers-color-scheme:dark){
+.pill.hi{background:#0C447C;color:#B5D4F4}.pill.hi2{background:#085041;color:#9FE1CB}
+.pill.warn,.pill.avoid{background:#791F1F;color:#F7C1C1}.pill.pink{background:#72243E;color:#F4C0D1}
+}
+
+/* SUBTABS */
+.stabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.65rem}
+.stab{font-size:11px;padding:3px 9px;border:0.5px solid var(--bd2);border-radius:20px;
+background:transparent;color:var(--t2);cursor:pointer;transition:all .12s;font-family:var(--f)}
+.stab.active{background:var(--bg2);color:var(--t1);border-color:var(--bd3)}
+.sp{display:none}.sp.active{display:block}
+.stab2{font-size:11px;padding:3px 9px;border:0.5px solid var(--bd2);border-radius:20px;
+background:transparent;color:var(--t2);cursor:pointer;transition:all .12s;font-family:var(--f)}
+.stab2.active{background:var(--bg2);color:var(--t1);border-color:var(--bd3)}
+.sp2{display:none}.sp2.active{display:block}
+
+/* WARN / INFO BOXES */
+.wb{border-radius:0 7px 7px 0;padding:.6rem .7rem;font-size:12px;line-height:1.5;margin:.4rem 0}
+.wb.red{background:#FCEBEB;color:#A32D2D;border-left:2.5px solid #E24B4A}
+.wb.amber{background:#FAEEDA;color:#633806;border-left:2.5px solid #EF9F27}
+.wb.purple{background:#EEEDFE;color:#534AB7;border-left:2.5px solid #7F77DD}
+.wb.teal{background:#E1F5EE;color:#085041;border-left:2.5px solid #1D9E75}
+.wb.blue{background:#E6F1FB;color:#0C447C;border-left:2.5px solid #3B8BD4}
+@media(prefers-color-scheme:dark){
+.wb.red{background:#791F1F;color:#F7C1C1}.wb.amber{background:#633806;color:#FAC775}
+.wb.purple{background:#3C3489;color:#CECBF6}.wb.teal{background:#085041;color:#9FE1CB}
+.wb.blue{background:#0C447C;color:#B5D4F4}
+}
+
+/* DIVIDER */
+.div{border:none;border-top:0.5px solid var(--bd1);margin:.65rem 0}
+
+/* TABLE */
+table.ct{width:100%;border-collapse:collapse;font-size:11px;margin:.4rem 0}
+table.ct th{font-weight:500;text-align:left;padding:5px 8px;background:var(--bg2);border-bottom:0.5px solid var(--bd2);color:var(--t2);font-size:10px;text-transform:uppercase}
+table.ct td{padding:5px 8px;border-bottom:0.5px solid var(--bd1);vertical-align:top;color:var(--t1);line-height:1.4}
+table.ct tr:last-child td{border-bottom:none}
+table.ct td.reg{font-weight:500;color:var(--t1)}
+table.ct td.small{color:var(--t2);font-size:10px}
+
+/* MEMORY */
+.mem{background:var(--bg2);border-left:3px solid #7F77DD;border-radius:0 7px 7px 0;
+padding:.75rem;font-size:12px;color:var(--t1);line-height:1.7}
+.mem ol{padding-left:1.1rem;margin:0}
+.mem li{margin-bottom:.2rem}
+
+/* FOOTER */
+.footer{margin-top:1.5rem;padding:.75rem 0;border-top:0.5px solid var(--bd1);
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.footer span{font-size:11px;color:var(--t2)}
+</style>
+</head>
+<body>
+<div class="page">
+<h1>HIV Management — Concise Clinical Reference</h1>
+<p class="tagline">Based on HHS/NIH Guidelines · Adults & Adolescents ARV · OI · Perinatal · Pediatric · Updated 2024–2026</p>
+<p class="source-note">Sources: HHS Panel on ARV Guidelines for Adults and Adolescents (Sep 2025); Guidelines for Prevention and Treatment of OIs (Mar 2026); Perinatal Guidelines (Jun 2025); Pediatric ARV Guidelines (Nov 2025)</p>
+<hr class="div">
+<div class="nav-wrap" id="nav"></div>
+<div id="panels"></div>
+<div class="footer">
+<span>&#169; Developed by <strong>Saad Alharbi</strong> &amp; <strong>Meshail Alharbi</strong> &middot; Phalsalhi@gmail.com</span>
+<span>HIV Clinical Reference &middot; Based on HHS/NIH Guidelines</span>
+</div>
+</div>
+<script>
+const steps=[
+{id:0,cat:'cat-dx',badge:'Baseline',bc:'b-gray',title:'Baseline evaluation & workup',sub:'Confirm diagnosis · Initial labs · Social & STI screening',content:`
+<div class="wb blue"><strong>What is HIV?</strong> Human Immunodeficiency Virus (HIV) is a retrovirus that infects and depletes CD4+ T-lymphocytes, progressively impairing cell-mediated immunity. Untreated, it leads to Acquired Immunodeficiency Syndrome (AIDS) — defined by CD4 &lt;200 cells/µL or an AIDS-defining illness. HIV is transmitted via sexual contact, blood exposure, and vertical (mother-to-child) transmission. HIV-1 is the predominant global strain; HIV-2 is less pathogenic and intrinsically NNRTI-resistant. With early and consistent ART, people living with HIV can achieve a near-normal life expectancy and carry effectively zero risk of sexual transmission when maintaining a suppressed viral load—defined as fewer than 50 copies per milliliter (U=U: Undetectable = Untransmittable).</div>
+<div class="bl"><div class="blab">Confirm HIV</div>
+<div class="pr"><span class="pill hi">HIV Ag/Ab (4th gen) + differentiation assay</span><span class="pill">If RNA &lt;LLoD: repeat Ag/Ab</span></div>
+</div>
+<div class="cg">
+<div class="card"><div class="cl">Viral markers</div><div class="cv">HIV RNA (viral load)<br>CD4 count</div></div>
+<div class="card"><div class="cl">Resistance</div><div class="cv">Genotype: RT + Protease genes<br>+ Integrase if CAB-LA PrEP history or INSTI suspicion</div></div>
+<div class="card"><div class="cl">Coinfections</div><div class="cv">HBsAg · anti-HBc (total) · anti-HBs<br>HCV Ab (or RNA if recent infection suspected)<br>HAV Ab · RPR/VDRL syphilis</div></div>
+<div class="card"><div class="cl">Safety labs</div><div class="cv">CBC + diff · BMP (eGFR, BUN, Cr, electrolytes)<br>LFTs (ALT, AST, Bili) · Glucose/HbA1c · Lipids<br>Urinalysis (urine glucose + protein)</div></div>
+<div class="card"><div class="cl">Pre-ART screening</div><div class="cv">HLA-B*5701 (if abacavir considered)<br>Pregnancy test (women of childbearing potential)<br>CMV IgG · Toxoplasma IgG</div></div>
+<div class="card"><div class="cl">STI screening</div><div class="cv">Gonorrhea · Chlamydia (site-specific)<br>Syphilis serology<br>Repeat every 3–6 months if high risk</div></div>
+</div>
+<div class="bl"><div class="blab">TB screen — always, regardless of CD4</div>
+<div class="bbod">Symptom screen (cough · fever · night sweats · weight loss) + CXR ± IGRA/TST</div>
+</div>
+<div class="bl"><div class="blab">If CD4 &lt;100 — add urgently</div>
+<div class="pr"><span class="pill warn">Cryptococcal Ag (CrAg) — serum or CSF</span><span class="pill warn">Toxoplasma IgG (if not done)</span></div>
+</div>
+<div class="bl"><div class="blab">Comprehensive assessment (beyond labs)</div>
+<div class="bbod">Substance use (tobacco · alcohol · PWID) · Mental health (depression · anxiety · PTSD) · Social determinants (housing · food security · insurance) · Readiness for ART · Disclosure to partners · U=U counselling · Immunisation history · SARS-CoV-2 vaccination status</div>
+</div>
+<div class="wb blue"><strong>Rapid ART initiation</strong> — Most clinics now initiate ART on the day of diagnosis. HIV RNA and CD4 should be drawn first but results need not be available before starting. Review resistance results as soon as available and adjust if needed. If HBV status unknown before starting, choose a regimen active against HBV.</div>
+<hr class="div">
+<div class="bl"><div class="blab">Lab monitoring schedule (Table 3 summary)</div></div>
+<table class="ct">
+<tr><th>Lab</th><th>Entry / ART start</th><th>4–8 weeks post-ART</th><th>3–6 months</th><th>Annually / as indicated</th></tr>
+<tr><td class="reg">HIV RNA (VL)</td><td>✓</td><td>✓ (target &lt;50)</td><td>✓ every 3–4 mo</td><td>Extend to q6m if stable &gt;1yr</td></tr>
+<tr><td class="reg">CD4 count</td><td>✓</td><td>✓ at 3 months</td><td>✓ q6m if &lt;300</td><td>Optional if stable &gt;300 &gt;2yr</td></tr>
+<tr><td class="reg">BMP / eGFR</td><td>✓</td><td>✓</td><td>✓ q6–12m</td><td>More if CKD or TDF/TAF use</td></tr>
+<tr><td class="reg">LFTs</td><td>✓</td><td>✓</td><td>✓ q6–12m</td><td>More if HBV/HCV coinfection</td></tr>
+<tr><td class="reg">Lipids</td><td>✓ fasting if abnormal</td><td>—</td><td>At 3–6 mo viral suppression</td><td>q1–3y (&lt;40yr); annually ≥40yr or on statin</td></tr>
+<tr><td class="reg">Glucose / HbA1c</td><td>✓</td><td>—</td><td>—</td><td>Annually; HbA1c not recommended for DM diagnosis on ART</td></tr>
+<tr><td class="reg">Urinalysis</td><td>✓</td><td>—</td><td>—</td><td>Annually (more if TDF/TAF)</td></tr>
+<tr><td class="reg">STI screen</td><td>✓</td><td>—</td><td>—</td><td>Annually; q3–6m if high risk</td></tr>
+<tr><td class="reg">HCV Ab</td><td>✓</td><td>—</td><td>—</td><td>Annually if at risk (PWID, MSM)</td></tr>
+</table>
+`},
+
+{id:1,cat:'cat-art',badge:'ART Initiation',bc:'b-blue',title:'When & how to start ART',sub:'Immediate ART for most · Exceptions · Treatment goals',content:`
+<div class="wb teal"><strong>ART is recommended for ALL people with HIV (AI)</strong> — regardless of CD4 count or viral load. Goal: durable viral suppression (HIV RNA &lt;200, ideally &lt;50 copies/mL) to prevent morbidity, mortality, and transmission (U=U).</div>
+<div class="bl"><div class="blab">Start immediately in most patients</div>
+<div class="bbod">Do not wait for resistance results, CD4, or viral load before starting. Review and adjust after results return.</div>
+</div>
+<hr class="div">
+<div class="bl"><div class="blab"><span class="tag tw">⚠ Delay ART — narrow exceptions only</span></div>
+<div class="cg">
+<div class="card acc-red"><div class="cl">Cryptococcal meningitis</div><div class="cv">Delay 2–10 weeks after antifungal induction<br><small>IRIS risk: high mortality, raised ICP</small></div></div>
+<div class="card acc-red"><div class="cl">TB meningitis</div><div class="cv">Delay ≥2 weeks; many experts wait until CNS disease stable<br><small>Grade 4 adverse events ↑ with immediate ART in CM trials</small></div></div>
+<div class="card acc-amber"><div class="cl">Active TB (CD4 ≥50)</div><div class="cv">Start ART within 2–8 weeks of TB treatment (AI)<br><small>See TB coinfection section for CD4-specific timing</small></div></div>
+<div class="card acc-amber"><div class="cl">Active TB (CD4 &lt;50)</div><div class="cv">Start ART within 2 weeks of TB treatment (AI)</div></div>
+</div>
+</div>
+<div class="wb amber">Any active OI at ART initiation carries IRIS risk — see the IRIS section. Delay is specific to CNS OIs and TB; start promptly for most others while treating the OI concurrently.</div>
+`},
+
+{id:2,cat:'cat-art',badge:'What to Start',bc:'b-blue',title:'ART regimen selection',sub:'Recommended · Alternative · Scenario-specific',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'ws1')">Recommended</button>
+<button class="stab" onclick="showSub(this,'ws2')">Alternative</button>
+<button class="stab" onclick="showSub(this,'ws3')">Scenario modifiers</button>
+<button class="stab" onclick="showSub(this,'ws4')">ARV classes overview</button>
+</div>
+
+<div id="ws1" class="sp active">
+<div class="wb teal"><strong>No history of CAB-LA PrEP:</strong> Use one of the following (AI)</div>
+<table class="ct">
+<tr><th>Regimen</th><th>Form</th><th>Key notes</th></tr>
+<tr><td class="reg">BIC/TAF/FTC</td><td>Single tablet daily</td><td>Highest barrier; preferred for most</td></tr>
+<tr><td class="reg">DTG + TAF/FTC or TDF/FTC or TDF/3TC</td><td>1–2 tablets daily</td><td>TAF: less bone/renal toxicity; TDF: better lipid profile</td></tr>
+<tr><td class="reg">DTG/3TC (2-drug)</td><td>Single tablet daily (AI)</td><td>Only if: RNA &lt;500,000 AND no HBV AND genotype available. Not if starting before results.</td></tr>
+</table>
+<div class="wb blue"><strong>History of CAB-LA PrEP:</strong> Order INSTI genotype first. While pending, start <strong>DRV/c or DRV/r + TAF/FTC or TDF/FTC</strong> (AIII). Switch to preferred INSTI regimen once genotype confirms sensitivity.</div>
+</div>
+
+<div id="ws2" class="sp">
+<table class="ct">
+<tr><th>Regimen</th><th>Evidence</th><th>Use when</th><th>Key caveats</th></tr>
+<tr><td class="reg">DTG/ABC/3TC</td><td>BI</td><td>Renal/bone contraindication to TDF/TAF</td><td>HLA-B*5701 MUST be negative; avoid if multiple CV risk factors; no HBV coinfection</td></tr>
+<tr><td class="reg">DRV/c or DRV/r + TAF/FTC (or TDF/FTC)</td><td>BI</td><td>INSTI resistance documented or suspected</td><td>Assess RTV/COBI drug interactions; avoid COBI in pregnancy</td></tr>
+<tr><td class="reg">DRV/c or DRV/r + ABC/3TC</td><td>BII</td><td>INSTI resistance + renal/bone concern</td><td>HLA-B*5701 negative required; avoid in HBV coinfection</td></tr>
+<tr><td class="reg">DOR/TDF/3TC</td><td>BI</td><td>Avoid INSTI and PI; favorable DDI profile</td><td>—</td></tr>
+<tr><td class="reg">DOR + TAF/FTC</td><td>BIII</td><td>As above but prefer TAF</td><td>—</td></tr>
+<tr><td class="reg">RPV/TAF/FTC</td><td>BII</td><td>Single tablet with NNRTI + TAF desired</td><td>Only if HIV RNA &lt;100,000 AND CD4 &gt;200; no PPIs; must take with meal</td></tr>
+</table>
+<div class="wb amber"><strong>No longer recommended:</strong> RAL, EVG/c, boosted ATV, EFV, RPV/TDF/FTC. Also removed: DRV/r+RAL and DRV/r+3TC dual therapy — due to failure risk, pill burden, or lack of trial data.</div>
+</div>
+
+<div id="ws3" class="sp">
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-red"><div class="cl">HBV coinfection (HBsAg+)</div><div class="cv">
+<span class="tag tt">MUST include</span> TAF or TDF + FTC or 3TC (AI)<br>
+<span class="tag tw">AVOID</span> 3TC or FTC monotherapy against HBV — resistance will emerge<br>
+<span class="tag tw">AVOID</span> DTG/3TC 2-drug therapy<br>
+If TDF/TAF contraindicated: add entecavir to a fully suppressive ARV regimen (BI)<br>
+<small>Stopping HBV-active therapy can cause severe hepatic flare — never discontinue without plan</small>
+</div></div>
+<div class="card acc-red"><div class="cl">TB + rifampin</div><div class="cv">
+<span class="tag tw">AVOID</span> BIC/TAF/FTC, RPV-based, boosted PIs (significant DDIs)<br>
+<span class="tag tt">USE</span> DTG 50 mg <strong>BID</strong> (dose-adjusted) with rifampin (AI) or<br>
+EFV 600 mg daily + TDF/FTC or TDF/3TC (established option)<br>
+Rifabutin is a weaker CYP3A4 inducer than rifampin — can be used with PIs and most INSTIs at standard dose with rifabutin dose adjustment
+</div></div>
+<div class="card acc-amber"><div class="cl">Renal impairment (eGFR &lt;30 mL/min)</div><div class="cv">
+<span class="tag tw">AVOID</span> TDF (accumulates → nephrotoxicity)<br>
+TAF: use cautiously; check Cr-based eGFR and urine protein<br>
+<span class="tag tt">USE</span> ABC-based regimen (only if HLA-B*5701 negative) (BIII)<br>
+Consult dosing appendix for full renal adjustments
+</div></div>
+<div class="card acc-amber"><div class="cl">HLA-B*5701 positive</div><div class="cv">
+<span class="tag tw">ABSOLUTE CONTRAINDICATION</span> to abacavir<br>
+Life-threatening hypersensitivity reaction — irreversible and can be fatal on re-challenge<br>
+Test once; keep result permanently in the medical record
+</div></div>
+<div class="card acc-purple"><div class="cl">High baseline VL (&gt;500,000) or treatment before genotype available</div><div class="cv">
+Do NOT use DTG/3TC 2-drug regimen<br>
+Use BIC/TAF/FTC or DTG + 2 NRTIs — high resistance barrier protects while awaiting results
+</div></div>
+<div class="card acc-purple"><div class="cl">INSTI intolerance (neuropsychiatric, significant weight gain)</div><div class="cv">
+<span class="tag tt">USE</span> DOR/TDF/3TC or RPV/TAF/FTC (NNRTI-based, if criteria met)<br>
+Or DRV/c or DRV/r + 2 NRTIs (PI-based)
+</div></div>
+<div class="card acc-blue"><div class="cl">Cardiovascular risk concerns (ABC)</div><div class="cv">
+Accumulating evidence links ABC to increased MI risk (D:A:D cohort data)<br>
+Consider avoiding ABC in patients with multiple CVD risk factors or known ASCVD<br>
+Prefer TAF or TDF-based backbone when feasible
+</div></div>
+</div>
+</div>
+
+<div id="ws4" class="sp">
+<table class="ct">
+<tr><th>Class</th><th>Mechanism</th><th>Key agents</th><th>Notes</th></tr>
+<tr><td class="reg">INSTI</td><td>Blocks integrase — prevents viral DNA integration</td><td>BIC, DTG, CAB, RAL, EVG</td><td>Highest barrier (BIC, DTG): best first-line. Weight gain signal. DTG: NTD signal in pregnancy (now largely resolved, see Pregnancy section)</td></tr>
+<tr><td class="reg">NRTI</td><td>Terminates reverse transcription</td><td>TAF, TDF, FTC, 3TC, ABC, ZDV</td><td>TAF: less renal/bone toxicity. TDF: better lipids. ABC: CVD signal. ZDV: reserved for pregnancy/specific scenarios</td></tr>
+<tr><td class="reg">NNRTI</td><td>Non-competitive RT inhibitor</td><td>DOR, RPV, EFV, ETR, NVP</td><td>DOR: best tolerated. RPV: meal required + restrictions. EFV: CNS toxicity, low barrier. NVP: hepatotoxicity risk</td></tr>
+<tr><td class="reg">PI (boosted)</td><td>Blocks protease cleavage</td><td>DRV/r, DRV/c, ATV/r</td><td>High barrier to resistance. Use DRV — ATV no longer first-line. COBI = cobicistat booster (many DDIs)</td></tr>
+<tr><td class="reg">Advanced agents</td><td>Entry / capsid / attachment</td><td>Fostemsavir, ibalizumab, lenacapavir, maraviroc</td><td>Reserved for multi-drug resistance or as salvage. Lenacapavir: q6-monthly injection (capsid inhibitor)</td></tr>
+<tr><td class="reg">Long-acting injectable</td><td>INSTI + NNRTI</td><td>CAB/RPV (Cabenuva) — monthly or q2m IM</td><td>For virally suppressed patients. Requires: no prior INSTI/RPV resistance, no HBV. Long pharmacologic tail — resistance risk if late doses or discontinuation without oral bridge</td></tr>
+</table>
+</div>
+`},
+
+{id:3,cat:'cat-oi',badge:'OI Prophylaxis',bc:'b-teal',title:'Opportunistic infection prophylaxis',sub:'Primary prophylaxis by CD4 · Stop criteria · LTBI',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'oi1')">Primary prophylaxis</button>
+<button class="stab" onclick="showSub(this,'oi2')">Stop / restart criteria</button>
+<button class="stab" onclick="showSub(this,'oi3')">LTBI treatment</button>
+<button class="stab" onclick="showSub(this,'oi4')">OI treatment overview</button>
+</div>
+
+<div id="oi1" class="sp active">
+<table class="ct">
+<tr><th>OI</th><th>Indication</th><th>Preferred prophylaxis</th><th>Alternative</th><th>Stop when</th></tr>
+<tr>
+<td class="reg">PCP (Pneumocystis)</td>
+<td>CD4 &lt;200 <em>or</em> CD4% &lt;14% <em>or</em> prior AIDS-defining illness (AI)</td>
+<td>TMP-SMX DS 1 tab daily (AI)</td>
+<td>TMP-SMX SS 1 tab daily; Dapsone 100mg daily; Atovaquone 1500mg daily; Aerosolised pentamidine 300mg monthly</td>
+<td>CD4 ≥200 for ≥3 months (AI)</td>
+</tr>
+<tr>
+<td class="reg">Toxoplasmosis</td>
+<td>CD4 &lt;100 + Toxo IgG positive (AI)</td>
+<td>TMP-SMX DS 1 tab daily (AI) — covers PCP too</td>
+<td>Dapsone 50mg/day + pyrimethamine 50mg weekly + leucovorin 25mg weekly<br>Atovaquone 1500mg/day</td>
+<td>CD4 ≥200 for &gt;3 months (AI)</td>
+</tr>
+<tr>
+<td class="reg">MAC</td>
+<td>CD4 &lt;50 — ONLY if ART cannot be started promptly (AI)</td>
+<td>Azithromycin 1,200mg weekly (AI)</td>
+<td>Clarithromycin 500mg BID; Rifabutin 300mg daily</td>
+<td>CD4 &gt;100 for ≥3 months (AI)</td>
+</tr>
+<tr>
+<td class="reg">Cryptococcal meningitis</td>
+<td>Not routinely recommended in US. Fluconazole prophylaxis in settings with CrAg prevalence &gt;3%</td>
+<td>Fluconazole 200mg daily (in high-burden settings)</td>
+<td>—</td>
+<td>CD4 &gt;200 on ART</td>
+</tr>
+<tr>
+<td class="reg">Histoplasmosis</td>
+<td>CD4 &lt;150 + endemic area (high-risk) (BIII)</td>
+<td>Itraconazole 200mg daily</td>
+<td>—</td>
+<td>CD4 ≥150 for ≥6 months + viral suppression (BIII)</td>
+</tr>
+<tr>
+<td class="reg">Coccidioidomycosis</td>
+<td>CD4 &lt;250 + endemic area (BIII)</td>
+<td>Fluconazole 400mg daily</td>
+<td>Itraconazole 200mg BID</td>
+<td>CD4 ≥250 + viral suppression (BIII)</td>
+</tr>
+</table>
+<div class="wb amber"><strong>MAC prophylaxis key principle:</strong> If ART is started promptly and effectively, MAC prophylaxis is generally NOT needed even at CD4 &lt;50. Effective ART suppresses MAC risk without azithromycin. Do not reflexively prescribe azithromycin.</div>
+<div class="wb blue"><strong>TMP-SMX covers both PCP and Toxo:</strong> A patient on TMP-SMX DS daily does NOT need additional prophylaxis for either OI.</div>
+</div>
+
+<div id="oi2" class="sp">
+<table class="ct">
+<tr><th>OI</th><th>Discontinue primary prophylaxis when</th><th>Restart primary prophylaxis if</th><th>Discontinue secondary prophylaxis when</th></tr>
+<tr><td class="reg">PCP</td><td>CD4 ≥200 for ≥3 months (AI)</td><td>CD4 &lt;100 regardless of VL (AIII); CD4 100–200 + detectable VL (AIII)</td><td>CD4 ≥200 for ≥3 months (AII)</td></tr>
+<tr><td class="reg">Toxoplasmosis</td><td>CD4 &gt;200 for &gt;3 months + VL suppressed (AI)</td><td>CD4 100–200 + detectable VL (AIII); CD4 &lt;100 (BIII)</td><td>CD4 &gt;200 for &gt;6 months + VL suppressed (AII)</td></tr>
+<tr><td class="reg">MAC</td><td>On fully suppressive ART (AI) — no MAC prophylaxis needed</td><td>CD4 &lt;50 + not on fully suppressive ART (AIII)</td><td>CD4 &gt;100 for ≥6 months (AI) after ≥12 months treatment + no MAC symptoms</td></tr>
+<tr><td class="reg">Cryptococcal meningitis (secondary)</td><td>CD4 ≥100 for ≥1 year + VL suppressed + ≥1 year antifungal therapy (BII)</td><td>CD4 &lt;100 (AIII)</td><td>Same criteria as discontinuation above</td></tr>
+<tr><td class="reg">CMV retinitis (secondary)</td><td>Not applicable</td><td>—</td><td>CD4 ≥100 for ≥3 months + lesions inactive + ophthalmology consultation (AII); restart if CD4 &lt;100 (AIII)</td></tr>
+<tr><td class="reg">Histoplasmosis (secondary)</td><td>—</td><td>—</td><td>CD4 ≥150 for ≥6 months + VL suppressed + negative cultures + antigen &lt;LoQ (AI)</td></tr>
+</table>
+</div>
+
+<div id="oi3" class="sp">
+<div class="bl"><div class="blab">Screen for LTBI — any CD4, all new patients</div>
+<div class="bbod">IGRA (preferred in most settings) or TST. Screen regardless of CD4 count. If CD4 &lt;200, false-negative IGRA/TST more likely — consider empiric treatment if epidemiologically high risk.</div>
+</div>
+<div class="bl"><div class="blab">Preferred LTBI regimens (select based on ARV interactions)</div></div>
+<table class="ct">
+<tr><th>Regimen</th><th>Duration</th><th>ARV compatibility</th><th>Notes</th></tr>
+<tr><td class="reg">1HP (INH 300mg + RPT 1200mg weekly)</td><td>12 weeks</td><td>EFV-based (AI); DTG 50mg BID during 1HP + 14 days after (AII)</td><td>Preferred short-course; high completion rates</td></tr>
+<tr><td class="reg">3HP (INH + RPT weekly)</td><td>3 months</td><td>EFV; RAL 400mg BID (AII)</td><td>Rifapentine interacts with most INSTIs and PIs</td></tr>
+<tr><td class="reg">4R (Rifampin daily)</td><td>4 months</td><td>No PIs; DTG, EFV with dose adjustment</td><td>Good completion rate; fewer DDIs than RPT</td></tr>
+<tr><td class="reg">9H (Isoniazid daily)</td><td>9 months</td><td>Most ARVs compatible</td><td>Longer duration; pyridoxine 25–50mg daily to prevent peripheral neuropathy</td></tr>
+<tr><td class="reg">6H (Isoniazid daily)</td><td>6 months</td><td>Most ARVs compatible</td><td>Less effective than 9H; use only if 9H not feasible</td></tr>
+</table>
+<div class="wb amber"><strong>IPT in pregnancy:</strong> Defer to postpartum — first-trimester IPT associated with increased fetal demise risk in some studies. After delivery, INH-based LTBI treatment is recommended if indicated.</div>
+<div class="wb blue"><strong>Monitor LFTs during LTBI treatment:</strong> Baseline + repeat if abnormal or if high-risk (viral hepatitis, alcohol use, pregnancy/postpartum). Stop if ALT &gt;5× ULN (asymptomatic) or &gt;3× ULN with symptoms or elevated bilirubin.</div>
+</div>
+
+<div id="oi4" class="sp">
+<table class="ct">
+<tr><th>OI</th><th>Treatment of acute episode</th><th>Duration</th><th>Secondary prophylaxis after treatment</th></tr>
+<tr><td class="reg">PCP (moderate–severe)</td><td>TMP-SMX IV (TMP 15–20mg/kg/d) + prednisone if PaO2 &lt;70mmHg or A-a ≥35mmHg (AI)<br>Alt: Primaquine 30mg + clindamycin IV/PO (AI); Pentamidine IV (AI)</td><td>21 days</td><td>TMP-SMX DS daily (AI)</td></tr>
+<tr><td class="reg">Toxoplasma encephalitis</td><td>Pyrimethamine 200mg load → weight-based daily + sulfadiazine + leucovorin 10–25mg daily (AI)<br>Alt: Pyrimethamine + clindamycin 600mg q6h (AI); Atovaquone 1500mg BID (BII)</td><td>≥6 weeks (longer if extensive disease)</td><td>Pyrimethamine 25–50mg + sulfadiazine + leucovorin (AI)<br>Alt: TMP-SMX DS BID (AII)</td></tr>
+<tr><td class="reg">Cryptococcal meningitis</td><td>Induction: Liposomal AmBisome 3–4mg/kg/d + flucytosine 25mg/kg QID (AI)<br>→ Consolidation: Fluconazole 400mg/d × 8 weeks (AI)<br>→ Maintenance: Fluconazole 200mg/d (AI)</td><td>Induction ≥2 weeks; consolidation 8 weeks; maintenance ≥1 year</td><td>Fluconazole 200mg daily (AI) — see stop criteria above</td></tr>
+<tr><td class="reg">MAC (disseminated)</td><td>Clarithromycin 500mg BID + ethambutol 15mg/kg/d (AI) ± rifabutin (CI)<br>Alt: Azithromycin + ethambutol</td><td>≥12 months (until CD4 &gt;100 ×6 months)</td><td>Same drugs at secondary prophylaxis dose</td></tr>
+<tr><td class="reg">CMV retinitis</td><td>Induction: Valganciclovir 900mg BID × 14–21 days (AI)<br>Alt: Ganciclovir IV, foscarnet IV, cidofovir IV</td><td>Induction 2–3 weeks</td><td>Valganciclovir 900mg daily (AI) until CD4 ≥100 × 3 months + ophthalmology review</td></tr>
+<tr><td class="reg">Drug-susceptible TB</td><td>HRZE × 8 weeks (intensive) → HR × duration (AI)<br>See TB coinfection tab for ARV timing</td><td>6 months (pulmonary); 9–12 months (meningitis)</td><td>None unless immunocompromised relapse</td></tr>
+<tr><td class="reg">Candida (oropharyngeal)</td><td>Fluconazole 100–200mg/d × 7–14 days (AI)<br>Alt: Clotrimazole troches; itraconazole; voriconazole</td><td>7–14 days</td><td>Only if frequent recurrence; CD4 &gt;200 → usually resolves with ART</td></tr>
+<tr><td class="reg">HSV (genital/mucocutaneous)</td><td>Valacyclovir 1g BID or acyclovir 400mg TID × 5–10 days<br>Severe: Acyclovir IV 5–10mg/kg q8h</td><td>5–10 days (episodic)</td><td>If ≥6 recurrences/year: valacyclovir 500mg–1g daily suppression</td></tr>
+<tr><td class="reg">Herpes zoster</td><td>Valacyclovir 1g TID or famciclovir 500mg TID × 7–10 days (AII)<br>Severe/disseminated: Acyclovir IV 10mg/kg q8h</td><td>7–10 days (longer if slow resolution)</td><td>Not routinely; continue ART</td></tr>
+<tr><td class="reg">Syphilis (early: primary/secondary/early latent)</td><td>Benzathine penicillin G 2.4M units IM × 1 dose (AII)<br>Alt (penicillin allergy): Doxycycline 100mg BID × 14 days (BII); Ceftriaxone 1g IM/IV daily × 10–14 days</td><td>Single dose (early); weekly × 3 (late latent)</td><td>Serological follow-up q3m (more frequent than in HIV-negative)</td></tr>
+<tr><td class="reg">Neurosyphilis</td><td>Aqueous crystalline PCN G 18–24M units/day IV (3–4M units q4h or continuous) × 10–14 days (AII)<br>Alt: Ceftriaxone 2g IV daily × 10–14 days (if truly PCN-allergic, non-pregnant)</td><td>10–14 days IV</td><td>Serological monitoring; consider +/- IM benzathine PCN after IV course</td></tr>
+</table>
+</div>
+`},
+
+{id:4,cat:'cat-special',badge:'Special Pops',bc:'b-purple',title:'Special populations',sub:'Acute HIV · Older adults · Substance use · Women · Adolescents · HIV-2',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'sp1')">Acute / early HIV</button>
+<button class="stab" onclick="showSub(this,'sp2')">Older adults (≥50)</button>
+<button class="stab" onclick="showSub(this,'sp3')">Substance use</button>
+<button class="stab" onclick="showSub(this,'sp4')">Women of childbearing age</button>
+<button class="stab" onclick="showSub(this,'sp5')">Adolescents & young adults</button>
+<button class="stab" onclick="showSub(this,'sp6')">HIV-2</button>
+</div>
+
+<div id="sp1" class="sp active">
+<div class="wb blue"><strong>Acute/recent HIV (Fiebig stages I–V):</strong> ART should be started as soon as possible — evidence supports early treatment to reduce viral reservoir size and preserve immune function. Use the same preferred regimens as chronic HIV.</div>
+<div class="cg">
+<div class="card acc-blue"><div class="cl">Diagnosis</div><div class="cv">Suspect in anyone with HIV risk + flu-like illness. 4th-gen Ag/Ab test + quantitative HIV RNA. In Fiebig stage I, only RNA is detectable. Differentiation assay may be indeterminate — RNA confirms.</div></div>
+<div class="card acc-blue"><div class="cl">ART in acute HIV</div><div class="cv">Start immediately — reduces reservoir seeding, preserves CD4, reduces onward transmission risk. Standard preferred INSTI regimens apply.</div></div>
+<div class="card acc-amber"><div class="cl">Resistance testing in acute HIV</div><div class="cv">Order genotype (RT + PR + INSTI if CAB-LA PrEP or INSTI-experienced source). Transmitted INSTI resistance rates currently low in US — INSTI-based regimen can start pending results.</div></div>
+<div class="card acc-teal"><div class="cl">U=U counselling</div><div class="cv">Viral load highest in acute phase → highest transmission risk. U=U applies only with durable suppression. Emphasise risk to partners during early period.</div></div>
+</div>
+</div>
+
+<div id="sp2" class="sp">
+<div class="cg">
+<div class="card acc-blue"><div class="cl">Diagnosis often delayed</div><div class="cv">Older adults more likely to present with AIDS at diagnosis — routine HIV screening recommended for all adults ≤75 years at least once; annually if at risk.</div></div>
+<div class="card acc-blue"><div class="cl">ART selection</div><div class="cv">Same preferred regimens. Prefer BIC/TAF/FTC or DTG-based. Avoid TDF if eGFR declining — switch to TAF. Review for polypharmacy DDIs (see DDI section).</div></div>
+<div class="card acc-amber"><div class="cl">Comorbidity burden</div><div class="cv">CVD, DM, CKD, osteoporosis, cognitive impairment, frailty — all more common and earlier in HIV. Annual screening for each. See CV/Metabolic section.</div></div>
+<div class="card acc-amber"><div class="cl">Bone health</div><div class="cv">Dual-energy X-ray absorptiometry (DXA) at 50+ years. TDF associated with bone loss → prefer TAF. Supplement vitamin D + calcium if deficient. Consider bisphosphonate if osteoporosis confirmed.</div></div>
+<div class="card acc-teal"><div class="cl">Cognitive issues</div><div class="cv">Screen for HIV-associated neurocognitive disorder (HAND). Simplify regimens where possible. Long-acting CAB/RPV may improve adherence in older patients with pill fatigue.</div></div>
+<div class="card acc-teal"><div class="cl">Switching in suppressed older patients</div><div class="cv">DTG/3TC (2-drug) or LA CAB/RPV may reduce pill burden. Confirm no HBV, no prior resistance before switching.</div></div>
+</div>
+</div>
+
+<div id="sp3" class="sp">
+<div class="wb blue"><strong>Substance use disorders (SUDs) do NOT preclude ART</strong> — SUDs are associated with poorer adherence but are not sufficiently predictive at the individual level to justify withholding therapy.</div>
+<div class="cg">
+<div class="card acc-blue"><div class="cl">Screening</div><div class="cv">AUDIT-C (alcohol); DAST-10 (drugs). Screen all patients at baseline + regularly. Two-question screen: "In the past year, have you used drugs other than those required for medical reasons?" + "Have you used drugs more than you meant to?"</div></div>
+<div class="card acc-blue"><div class="cl">ART approach</div><div class="cv">Use high-barrier regimens (DTG, BIC) — less risk of resistance if adherence lapses. Consider LA CAB/RPV injection (q4w or q8w) as adherence strategy in select patients with specialist support.</div></div>
+<div class="card acc-amber"><div class="cl">Opioid use disorder</div><div class="cv">Methadone/buprenorphine markedly improve outcomes. Key DDIs: Rifamycins ↓ methadone → withdrawal. EFV may ↓ methadone. DTG, BIC: minimal interactions with opioid medications.</div></div>
+<div class="card acc-amber"><div class="cl">Alcohol use disorder</div><div class="cv">Alcohol is hepatotoxic — monitor LFTs more frequently. Avoid hepatotoxic ART where possible. Screen for depression (comorbid 30–50%).</div></div>
+<div class="card acc-teal"><div class="cl">Stimulant use</div><div class="cv">Methamphetamine, cocaine — associated with high-risk sexual behaviour and transmission. PI boosters (RTV/COBI) may ↑ MDMA/methamphetamine levels → potentially dangerous.</div></div>
+<div class="card acc-teal"><div class="cl">Injection drug use</div><div class="cv">Offer harm reduction: needle/syringe programs, naloxone. Repeat HCV, HBV, bacterial infection screening. Endocarditis: any new murmur + fever in PWID = echocardiography.</div></div>
+</div>
+</div>
+
+<div id="sp4" class="sp">
+<div class="cg">
+<div class="card acc-pink"><div class="cl">Contraception + ART interactions</div><div class="cv">Rifamycins ↓ hormonal contraceptives (unreliable). EFV + ETR ↓ some oral contraceptives. DTG, BIC, RPV: no significant effect on contraceptives. DMPA (injectable) is least affected by ART. Copper IUD: no DDIs. See Table 3 in Prepregnancy Guidelines for full list.</div></div>
+<div class="card acc-pink"><div class="cl">Menopause in HIV</div><div class="cv">Earlier menopause (2–5 years earlier vs. HIV-negative). Severe menopausal symptoms may impair ART adherence. Hormone therapy indications same as HIV-negative women — not routinely for CVD prevention. Monitor bone density + cardiovascular risk.</div></div>
+<div class="card acc-pink"><div class="cl">Pre-pregnancy counselling</div><div class="cv">Optimise viral suppression before conception. Switch to pregnancy-safe regimen if needed. Folic acid supplementation. U=U — if VL &lt;200, sexual transmission to partner is effectively zero.</div></div>
+<div class="card acc-pink"><div class="cl">ART in pregnancy — see Pregnancy tab</div><div class="cv">Preferred regimen in pregnancy: DTG + TAF/TDF + FTC/3TC. Start ART immediately regardless of trimester. Switch if regimen contains agents with safety concerns in pregnancy.</div></div>
+</div>
+</div>
+
+<div id="sp5" class="sp">
+<div class="wb blue"><strong>Adolescents and young adults (AYA, 13–24 years):</strong> Second highest new diagnosis rate in US. Unique adherence barriers. Transition from pediatric to adult care is a critical gap.</div>
+<div class="cg">
+<div class="card acc-blue"><div class="cl">ART in AYA</div><div class="cv">Same preferred regimens as adults. BIC/TAF/FTC or DTG-based. Consider long-acting CAB/RPV once virally suppressed — reduces disclosure risk from pill-taking.</div></div>
+<div class="card acc-purple"><div class="cl">Adherence barriers</div><div class="cv">Stigma · disclosure fears · mental health · substance use · mistrust of medical systems · unstable housing. Nonjudgmental, AYA-centred communication essential. Do not withhold ART based on perceived non-adherence.</div></div>
+<div class="card acc-purple"><div class="cl">Transition to adult care</div><div class="cv">Proactive planning starting at 16–18. Ensure uninterrupted ART supply during transition. Identify adult HIV provider before transition. Case management + peer support during transition period.</div></div>
+<div class="card acc-teal"><div class="cl">Mental health</div><div class="cv">Depression, anxiety, PTSD common. Screen routinely. Link to mental health services. DTG preferred over EFV — fewer neuropsychiatric effects.</div></div>
+</div>
+</div>
+
+<div id="sp6" class="sp">
+<div class="wb amber"><strong>HIV-2:</strong> Distinct virus — not detected by HIV-1 RNA assays. HIV-2 RNA assays not commercially available in all settings.</div>
+<div class="cg">
+<div class="card acc-amber"><div class="cl">Diagnosis</div><div class="cv">HIV-1/2 differentiation assay confirms HIV-2. If HIV-2 RNA needed, send to reference lab. CD4 count monitored clinically — VL monitoring unreliable with standard assays.</div></div>
+<div class="card acc-red"><div class="cl">Intrinsic resistance — AVOID</div><div class="cv">HIV-2 is intrinsically resistant to:<br>• All NNRTIs (EFV, RPV, DOR, NVP, ETR)<br>• Enfuvirtide (fusion inhibitor)<br>• Some data on reduced susceptibility to some PIs</div></div>
+<div class="card acc-teal"><div class="cl">Preferred for HIV-2</div><div class="cv">INSTI-based (DTG or BIC) + 2 NRTIs (TAF/FTC or TDF/FTC)<br>Boosted DRV is also active against HIV-2<br>No randomised trial data — expert consultation advised</div></div>
+<div class="card acc-blue"><div class="cl">HIV-1/HIV-2 coinfection</div><div class="cv">Treat both — standard preferred INSTI regimen. Avoid NNRTIs. Monitor CD4 counts. HIV-2 usually slower progression.</div></div>
+</div>
+</div>
+`},
+
+{id:5,cat:'cat-coinfect',badge:'Coinfections',bc:'b-amber',title:'HIV + coinfections',sub:'HBV · HCV · Tuberculosis',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'co1')">HBV/HIV</button>
+<button class="stab" onclick="showSub(this,'co2')">HCV/HIV</button>
+<button class="stab" onclick="showSub(this,'co3')">TB/HIV</button>
+</div>
+
+<div id="co1" class="sp active">
+<div class="wb blue"><strong>Panel's core recommendation (AI):</strong> ARV regimen MUST include (TAF or TDF) + (FTC or 3TC) as the NRTI backbone to treat both HIV and HBV.</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-amber"><div class="cl">Baseline workup for HBV/HIV coinfection</div><div class="cv">HBsAg · anti-HBc · anti-HBs → HBV DNA (quantitative) if HBsAg positive · HBV genotype for treatment planning · LFTs · HAV serology (vaccinate if non-immune)</div></div>
+<div class="card acc-red"><div class="cl">MUST include (AI)</div><div class="cv">TAF or TDF + FTC or 3TC — active against both HIV and HBV. Do NOT use 3TC or FTC alone as the only HBV drug (HBV resistance will emerge — AII).</div></div>
+<div class="card acc-red"><div class="cl">If TDF/TAF cannot be used</div><div class="cv">Add entecavir to a fully suppressive ARV regimen (BI). Never give entecavir without full ARV regimen — risk of HIV M184V mutation.</div></div>
+<div class="card acc-red"><div class="cl">AVOID these in HBV/HIV (AI)</div><div class="cv">Adefovir · pegylated interferon alfa · 3TC/FTC as sole HBV agents · DTG/3TC 2-drug regimen · Any regimen without HBV-active components</div></div>
+<div class="card acc-amber"><div class="cl">Switching in HBV/HIV — critical warning</div><div class="cv">When switching ART (including to LA CAB/RPV), maintain HBV-active drugs OR substitute entecavir. Stopping HBV-active therapy → severe hepatic flare (HBV reactivation hepatitis → hepatocellular damage → potentially fatal). Monitor ALT for 6 months after any switch away from TDF/TAF.</div></div>
+<div class="card acc-teal"><div class="cl">Monitoring</div><div class="cv">HBV DNA + LFTs at 3–6 months · Annual LFTs · HCC surveillance if cirrhosis or high-risk features (ultrasound + AFP q6m) · Hepatology co-management if cirrhosis</div></div>
+</div>
+</div>
+
+<div id="co2" class="sp">
+<div class="wb teal"><strong>Key principles:</strong> ART should be started for all HIV/HCV patients regardless of CD4 (AI). Screen all HIV patients for HCV at baseline + annually if at risk. Evaluate all HCV/HIV patients for HCV treatment.</div>
+<div class="cg">
+<div class="card acc-blue"><div class="cl">ART + HCV DAA — key interactions</div><div class="cv">
+<strong>Compatible (can use freely):</strong> DTG, BIC, RAL + most DAAs<br>
+<strong>Caution / dose adjust:</strong> Boosted PIs (↑ HCV DAA or ARV levels) — check per agent<br>
+<strong>Avoid:</strong> EVG/c + glecaprevir (hepatotoxicity signal)<br>
+<strong>General rule:</strong> DTG-based ART has fewest DDIs with HCV DAAs
+</div></div>
+<div class="card acc-amber"><div class="cl">HBV reactivation during HCV treatment</div><div class="cv">If HBsAg positive: must be on ART with dual HBV-active agents before starting HCV DAA therapy. If HBsAg negative but HBcAb positive (resolved HBV): monitor ALT closely during and after DAA treatment (reactivation can still occur).</div></div>
+<div class="card acc-blue"><div class="cl">HCV DAA selection</div><div class="cv">Refer to latest HCV guidance (HCVGuidance.org) — rapidly evolving field. For HIV/HCV with INSTI-based ART: Sofosbuvir/velpatasvir or glecaprevir/pibrentasvir generally compatible. Avoid sofosbuvir/velpatasvir/voxilaprevir with ritonavir/cobicistat-boosted ARVs.</div></div>
+<div class="card acc-teal"><div class="cl">Fibrosis staging</div><div class="cv">FIB-4 score or FibroScan before HCV treatment — guides duration of therapy and predicts HCC risk. If cirrhosis: quarterly ultrasound + AFP for HCC surveillance even after cure.</div></div>
+</div>
+</div>
+
+<div id="co3" class="sp">
+<div class="bl"><div class="blab">ART timing in TB/HIV — CD4-guided (AI)</div></div>
+<table class="ct">
+<tr><th>CD4 count</th><th>When to start ART</th><th>Evidence</th></tr>
+<tr><td class="reg">CD4 &lt;50</td><td>Within <strong>2 weeks</strong> of starting TB treatment</td><td>AI (3 randomised trials)</td></tr>
+<tr><td class="reg">CD4 ≥50</td><td>Within <strong>2–8 weeks</strong> of starting TB treatment</td><td>AI</td></tr>
+<tr><td class="reg">TB meningitis (any CD4)</td><td>Delay at least <strong>2 weeks</strong>; many experts wait until CNS disease stable (≥4–8 weeks)</td><td>AIII; grade 4 AEs ↑ with early ART in CM trials</td></tr>
+<tr><td class="reg">Drug-resistant TB (MDR/XDR)</td><td>Start <strong>as early as possible</strong> within first 8 weeks (WHO recommendation)</td><td>AIII</td></tr>
+<tr><td class="reg">Pregnant + active TB</td><td>Start <strong>as early as feasible</strong> regardless of CD4</td><td>AIII</td></tr>
+</table>
+<hr class="div">
+<div class="bl"><div class="blab">ARV selection with TB (rifampin-containing regimens)</div></div>
+<table class="ct">
+<tr><th>ARV choice</th><th>With rifampin</th><th>Notes</th></tr>
+<tr><td class="reg">DTG 50mg BID</td><td>Compatible (AI)</td><td>Double the DTG dose; continue BID for 14 days after rifampin stops then revert to once daily</td></tr>
+<tr><td class="reg">EFV 600mg daily</td><td>Compatible (AI)</td><td>No dose increase needed despite label (evidence does not support 800mg in rifampin)</td></tr>
+<tr><td class="reg">Rifabutin (substituted for rifampin)</td><td>Allows PIs + standard-dose INSTIs</td><td>Rifabutin dose adjust by ARV: 150mg/d with boosted PIs; 300mg/d with INSTIs. Monitor for rifabutin toxicity (uveitis, cytopenias)</td></tr>
+<tr><td class="reg">BIC, EVG/c</td><td>AVOID (AI)</td><td>Significant levels reduction — treatment failure risk</td></tr>
+<tr><td class="reg">Boosted PIs with rifampin</td><td>AVOID — rifampin reduces PI levels by 75–90%</td><td>Rifabutin can be substituted if PI required</td></tr>
+<tr><td class="reg">TAF with rifampin</td><td>Use with caution + close VL monitoring (BIII)</td><td>TAF levels reduced by P-gp induction; intracellular TFV-DP remains above IC90 in studies</td></tr>
+<tr><td class="reg">LA CAB/RPV (long-acting injectable)</td><td>CONTRAINDICATED with any rifamycin</td><td>Oral bridge regimen required</td></tr>
+</table>
+<hr class="div">
+<div class="bl"><div class="blab">Active TB treatment (drug-susceptible)</div>
+<div class="bbod"><strong>Intensive phase (8 weeks):</strong> INH + RIF (or RFB) + PZA + EMB + pyridoxine 25–50mg/d (AI)<br>
+<strong>Continuation phase:</strong> INH + RIF (or RFB) daily (AII)<br>
+<strong>Duration:</strong> Pulmonary uncomplicated 6 months · Cavitary or culture+ at 8 weeks: 9 months · TB meningitis: 9–12 months · Extrapulmonary (other sites): 6 months<br>
+DOT (directly observed therapy) recommended for all HIV/TB (AII)</div>
+</div>
+<div class="wb purple"><strong>TB-IRIS:</strong> Occurs in 8–40% starting ART with TB. Most within 3 months of ART. Predictors: CD4 &lt;50, high pre-ART VL, &lt;30-day gap between TB and ART. Continue ART during IRIS (AIII). For moderate–severe TB-IRIS: prednisolone 1.25mg/kg/d tapering over 4–8 weeks (BII) improves symptoms and reduces hospitalisation.</div>
+</div>
+`},
+
+{id:6,cat:'cat-fail',badge:'Failure',bc:'b-red',title:'Virological failure management',sub:'Define · Assess · Resistance · Switch',content:`
+<div class="bl"><div class="blab">Definition of virological failure (AI)</div>
+<div class="bbod">HIV RNA &gt;200 copies/mL after previously confirmed suppression, <strong>or</strong> no suppression (&lt;200) by ~24 weeks on ART. Confirm with repeat VL — do not act on a single blip (50–200 copies/mL may resolve). Persistent low-level viraemia &gt;200 increases failure risk.</div>
+</div>
+<div class="cg">
+<div class="card acc-red"><div class="cl">Step 1 — Adherence first</div><div class="cv">Most failures are adherence-related. Assess carefully and non-judgementally: missed doses, pill-taking routine, tolerability, cost, disclosure. Do NOT change regimen for adherence failure alone.</div></div>
+<div class="card acc-red"><div class="cl">Step 2 — Drug interactions</div><div class="cv">Review all concomitant medications. Rifamycins, PPIs (with RPV/ATV), acid-suppressing drugs. ARV–ARV interactions if on complex regimen.</div></div>
+<div class="card acc-amber"><div class="cl">Step 3 — Resistance test</div><div class="cv">Order genotype (RT + PR + integrase) while patient is STILL ON the failing regimen. Mutations revert to wild-type off selective pressure — testing after stopping is unreliable. Include proviral DNA testing only if viral suppression present.</div></div>
+<div class="card acc-amber"><div class="cl">Step 4A — No resistance found</div><div class="cv">Fix adherence → continue same regimen with enhanced support. Counselling, simplification, pill reminder apps, DOT if needed.</div></div>
+<div class="card acc-red"><div class="cl">Step 4B — Resistance found</div><div class="cv">Construct new regimen with ≥2 fully active drugs. Review <em>cumulative</em> resistance history — archived mutations can re-emerge. Consult HIV specialist for multi-class resistance.</div></div>
+<div class="card acc-red"><div class="cl">PI-based escalation for resistance</div><div class="cv">Boosted darunavir (DRV/r or DRV/c) + optimised NRTIs ± INSTI (if susceptible). DRV has very high resistance barrier — retains activity against most resistant viruses. AI evidence for PI backbone in failure.</div></div>
+</div>
+<hr class="div">
+<div class="bl"><div class="blab">INSTI resistance</div>
+<div class="bbod">INSTI resistance mutations: N155H, Q148H/K/R, G140S, Y143 → cross-resistance to RAL and EVG. DTG and BIC have higher barrier but G148 + secondary mutations can compromise both. If INSTI resistance present → remove failing INSTI, use boosted DRV backbone.</div>
+</div>
+<div class="bl"><div class="blab">Multi-drug resistance (salvage)</div></div>
+<div class="pr">
+<span class="pill hi2">Fostemsavir (gp120 attachment inhibitor)</span>
+<span class="pill hi2">Ibalizumab (CD4 post-attachment inhibitor, IV q2w)</span>
+<span class="pill hi2">Lenacapavir (capsid inhibitor, SC q6 months)</span>
+<span class="pill hi2">Maraviroc (CCR5 — if CCR5 tropic)</span>
+</div>
+<div class="wb amber"><strong>Before using salvage agents:</strong> Perform tropism assay (for MVC). Genotype for all relevant genes. Use in combination — never as monotherapy. HIV specialist involvement required.</div>
+<hr class="div">
+<div class="bl"><div class="blab">Optimising ART in virally suppressed patients (switching)</div>
+<div class="bbod">Reasons to switch: simplify regimen · reduce toxicity · drug interactions · cost · pregnancy · preference. Principle: <strong>maintain viral suppression</strong> without jeopardising future options. Review full ARV history + cumulative resistance before switching. Avoid switching from high-barrier to low-barrier without full resistance history.</div>
+</div>
+<table class="ct">
+<tr><th>Switch scenario</th><th>Option</th><th>Key requirements</th></tr>
+<tr><td class="reg">No prior resistance, suppressed</td><td>Restart previously prescribed HIV medications; or NRTI-sparing: DTG/RPV (AI) or LA CAB/RPV (AI)</td><td>No prior INSTI or RPV resistance; no HBV</td></tr>
+<tr><td class="reg">Existing NRTI resistance</td><td>Include TAF/TDF + FTC/3TC + high-barrier drug (DTG/BIC/DRV)</td><td>Avoid switching if uncertain about resistance</td></tr>
+<tr><td class="reg">HBV/HIV coinfection switching</td><td>Maintain TDF or TAF; or add entecavir to new regimen (AII)</td><td>Never stop HBV-active agents without HBV plan</td></tr>
+<tr><td class="reg">Toxicity-driven switch</td><td>Remove offending drug; substitute with equivalent (or different class if needed)</td><td>Monitor VL 4–8 weeks after switch (AIII)</td></tr>
+</table>
+`},
+
+{id:7,cat:'cat-preg',badge:'Pregnancy',bc:'b-pink',title:'Pregnancy pathway',sub:'ART selection · Timing · Intrapartum · Infant · Breastfeeding',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'pr1')">ART selection</button>
+<button class="stab" onclick="showSub(this,'pr2')">Monitoring & timing</button>
+<button class="stab" onclick="showSub(this,'pr3')">Intrapartum</button>
+<button class="stab" onclick="showSub(this,'pr4')">Infant management</button>
+<button class="stab" onclick="showSub(this,'pr5')">Breastfeeding</button>
+</div>
+
+<div id="pr1" class="sp active">
+<div class="wb teal"><strong>Core principle:</strong> ART should be initiated immediately in all pregnant people with HIV, regardless of trimester or CD4 count, to protect maternal health and prevent perinatal transmission.</div>
+<table class="ct">
+<tr><th>Regimen</th><th>Evidence</th><th>Notes</th></tr>
+<tr><td class="reg">BIC/TAF/FTC — Biktarvy® (PREFERRED)</td><td>AI</td><td>Now a preferred option per June 2025 Perinatal Guidelines. Accumulating safety data supports use throughout pregnancy including T1. Single tablet once daily — may be preferred for adherence/simplicity.</td></tr>
+<tr><td class="reg">DTG + TAF/FTC or TDF/FTC (PREFERRED)</td><td>AI</td><td>Best efficacy + tolerability; DTG approved in pregnancy including T1 — see below</td></tr>
+<tr><td class="reg">DTG + TDF/3TC</td><td>AI</td><td>TDF/3TC alternative to FTC</td></tr>
+<tr><td class="reg">RAL + TDF/FTC</td><td>AI</td><td>Established safety data; more pills; acceptable alternative</td></tr>
+<tr><td class="reg">DRV/r + TDF/FTC (avoid COBI)</td><td>BI</td><td>Use ritonavir-boosted DRV — COBI levels fall in T2/T3 → subtherapeutic DRV</td></tr>
+<tr><td class="reg">ZDV + 3TC + (DTG or RAL)</td><td>AI</td><td>ZDV combinations: established safety; consider if prior ZDV experience needed</td></tr>
+</table>
+<hr class="div">
+<div class="bl"><div class="blab">DTG in pregnancy — current position (updated)</div>
+<div class="bbod">Original 2018 Botswana Tsepamo study signal: 4/426 NTDs with periconceptional DTG (0.94%) vs. 0.12% non-DTG. Subsequent data from 6,000+ DTG-exposed pregnancies (including Tsepamo extension + US national cohort) did NOT replicate the NTD signal at a clinically meaningful rate. WHO and HHS guidelines now recommend DTG throughout pregnancy including first trimester. Counsel all patients; document the discussion. Folic acid supplementation advised (as for all pregnancies).</div>
+</div>
+<hr class="div">
+<div class="bl"><div class="blab">AVOID in pregnancy</div>
+<div class="pr">
+<span class="pill avoid">EFV — animal teratogen; avoid in T1 if possible (may switch)</span>
+<span class="pill avoid">COBI (cobicistat) — levels fall in T2/T3; subtherapeutic DRV</span>
+<span class="pill avoid">Stavudine (d4T) — mitochondrial toxicity</span>
+<span class="pill avoid">Didanosine (ddI)</span>
+<span class="pill avoid">Tipranavir — limited data</span>
+</div>
+</div>
+<div class="wb blue">If HBV coinfection: same rule as non-pregnant — MUST include TDF or TAF + FTC or 3TC. Do not use DTG/3TC 2-drug regimen in HBV/HIV.</div>
+</div>
+
+<div id="pr2" class="sp">
+<table class="ct">
+<tr><th>Scenario</th><th>Action</th></tr>
+<tr><td class="reg">ART-naive presenting in pregnancy</td><td>Start ART immediately regardless of trimester or CD4. Do not wait for resistance results if clinically urgent.</td></tr>
+<tr><td class="reg">Already on ART at conception</td><td>Continue if regimen is safe in pregnancy and virally suppressive. Switch only if contains contraindicated drug (EFV in T1, COBI).</td></tr>
+<tr><td class="reg">Presenting late (&gt;28 weeks) not on ART</td><td>Start ART immediately. Consider adding ZDV to the regimen until virally suppressed.</td></tr>
+<tr><td class="reg">Prior ART experience, not currently taking</td><td>Restart; review resistance history before choosing regimen.</td></tr>
+<tr><td class="reg">VL not suppressed on ART</td><td>Assess adherence + check resistance. Optimise urgently. Consider adding ZDV intrapartum if VL still &gt;1000 near delivery.</td></tr>
+</table>
+<hr class="div">
+<div class="bl"><div class="blab">VL monitoring schedule in pregnancy</div>
+<div class="bbod">Baseline → 4 weeks after initiation/change → monthly until VL &lt;50 copies/mL → at 36 weeks (guides delivery planning) → at delivery if needed</div>
+</div>
+<div class="bl"><div class="blab">Additional antepartum screening</div>
+<div class="bbod">CD4 at initial visit + each trimester · Resistance testing if new or changed regimen · HBV, HCV, STI, TB screening · GBS at 35–37 weeks · Glucose tolerance test · Standard obstetric assessments</div>
+</div>
+</div>
+
+<div id="pr3" class="sp">
+<table class="ct">
+<tr><th>VL at 36 weeks</th><th>Delivery recommendation</th><th>Intrapartum ZDV</th></tr>
+<tr><td class="reg">&lt;50 copies/mL</td><td>Vaginal delivery is safe — elective CS not required for HIV alone (AI)</td><td>Not required routinely (AI)</td></tr>
+<tr><td class="reg">50–999 copies/mL</td><td>Case-by-case discussion; consider CS</td><td>Consider IV ZDV</td></tr>
+<tr><td class="reg">≥1,000 copies/mL or unknown</td><td>Scheduled caesarean section at 38 weeks recommended (AI)</td><td>IV ZDV 2mg/kg load then 1mg/kg/h from 3 hours before delivery (AII)</td></tr>
+</table>
+<div class="wb amber"><strong>Do NOT perform amniocentesis or fetal scalp electrode if VL detectable</strong> — increases perinatal transmission risk. Avoid prolonged rupture of membranes if VL &gt;1000.</div>
+</div>
+
+<div id="pr4" class="sp">
+<div class="bl"><div class="blab">Neonatal prophylaxis (Table 10/11 summary)</div></div>
+<table class="ct">
+<tr><th>Risk category</th><th>Criteria</th><th>Infant ARV prophylaxis</th><th>Duration</th></tr>
+<tr><td class="reg">Low risk</td><td>Mother on suppressive ART, VL &lt;50 near delivery, no lapse in care</td><td>ZDV 4mg/kg/dose BID (or age-based dose)</td><td>4 weeks</td></tr>
+<tr><td class="reg">Higher risk</td><td>Mother: suboptimal ART, VL &gt;50, no ART, late booking, or unknown VL</td><td>ZDV + NVP (3 doses: birth, 48h, 96h) + 3TC<br>— Triple therapy (BIII)</td><td>4–6 weeks</td></tr>
+<tr><td class="reg">Very high risk / presumptive HIV</td><td>Suspected HIV-positive infant based on exposure + no maternal suppression</td><td>Presumptive HIV therapy: DTG-based 3-drug ART from birth</td><td>Continue until HIV excluded or confirmed</td></tr>
+</table>
+<div class="wb blue"><strong>Start infant prophylaxis within 4–6 hours of birth.</strong> HIV nucleic acid test (NAT/PCR) at birth, 14–21 days, 1–2 months, 4–6 months. If any PCR positive: repeat immediately and start ART — do not wait for second result.</div>
+</div>
+
+<div id="pr5" class="sp">
+<div class="cg">
+<div class="card acc-pink"><div class="cl">High-income settings (US/UK)</div><div class="cv">Replacement feeding (formula) is recommended if safe, affordable, and sustainable. Avoidance of breastfeeding eliminates postnatal HIV transmission risk.</div></div>
+<div class="card acc-pink"><div class="cl">Resource-limited settings (WHO guidance)</div><div class="cv">If breastfeeding: mother must remain on suppressive ART throughout the breastfeeding period. Breastfeeding with full ART suppression substantially reduces but does not eliminate transmission. Infant prophylaxis during breastfeeding per Table 12 of guidelines.</div></div>
+<div class="card acc-amber"><div class="cl">If breastfeeding occurs (any setting)</div><div class="cv">Maternal VL must remain suppressed. Infant HIV PCR at regular intervals throughout breastfeeding + 6 weeks after weaning. Exclusive breastfeeding (no mixed feeding) if breastfeeding chosen — mixed feeding increases transmission risk.</div></div>
+<div class="card acc-teal"><div class="cl">Postpartum maternal care</div><div class="cv">Continue ART postpartum. Depression screen at 4–6 weeks. Address adherence barriers (childcare, fatigue, depression). Re-screen for STIs. Discuss contraception. Transition back to primary HIV care from obstetric care — this is a high-risk period for loss to follow-up.</div></div>
+</div>
+</div>
+`},
+
+{id:8,cat:'cat-iris',badge:'IRIS',bc:'b-amber',title:'IRIS — beyond CNS OIs',sub:'Definition · Risk factors · Presentations · Management',content:`
+<div class="card" style="border-left:2.5px solid #EF9F27;margin-bottom:.7rem">
+<div class="cl">Definition</div>
+<div class="cv">Immune Reconstitution Inflammatory Syndrome — paradoxical worsening or unmasking of an OI driven by recovering immune function after ART initiation. This is <strong>NOT treatment failure</strong>. Two forms: (1) Paradoxical IRIS — treated OI deteriorates; (2) Unmasking IRIS — subclinical OI becomes apparent as immunity recovers.</div>
+</div>
+<div class="bl"><div class="blab">Risk factors</div>
+<div class="pr">
+<span class="pill warn">CD4 &lt;100 at ART initiation</span>
+<span class="pill warn">Active or subclinical OI present at ART start</span>
+<span class="pill warn">Rapid VL drop in first weeks</span>
+<span class="pill warn">ART started &lt;2 weeks into OI treatment</span>
+<span class="pill warn">High pre-ART antigen/pathogen burden</span>
+</div>
+</div>
+<div class="bl"><div class="blab">Common IRIS presentations — not just CNS</div></div>
+<div class="cg">
+<div class="card acc-amber"><div class="cl">TB-IRIS (most common)</div><div class="cv">Fever, lymphadenopathy, worsening pulmonary infiltrates, new pleural effusion, enlarging tuberculomas. Paradoxical or unmasking. Onset 1–4 weeks after ART start. Most TB-IRIS episodes are self-limited but can be severe.</div></div>
+<div class="card acc-red"><div class="cl">Cryptococcal IRIS (highest mortality)</div><div class="cv">Raised intracranial pressure, meningismus, new or worsening CNS lesions. Most dangerous IRIS — hence the 2–10 week delay rule for CM. Therapeutic LP remains cornerstone (ICP management &gt; steroids for CM-IRIS).</div></div>
+<div class="card acc-amber"><div class="cl">MAC-IRIS</div><div class="cv">Fever, lymphadenitis, hepatosplenomegaly 4–8 weeks post-ART start. Often unmasking of subclinical MAC — particularly relevant at CD4 &lt;50. Treat with clarithromycin + ethambutol regimen.</div></div>
+<div class="card acc-amber"><div class="cl">CMV-IRIS</div><div class="cv">Vitritis, uveitis flare (immune recovery uveitis — IRU) after ART in patients with treated CMV retinitis. Can cause vision loss. Ophthalmology monitoring q3 months after ART in CMV retinitis patients.</div></div>
+<div class="card acc-amber"><div class="cl">PML-IRIS</div><div class="cv">JC virus encephalitis paradoxically worsens or unmasks — new CNS lesions, neurological deterioration despite ART benefit. Do NOT stop ART. Corticosteroids may be considered (BIII) — evidence limited.</div></div>
+<div class="card acc-teal"><div class="cl">Herpes/VZV-IRIS</div><div class="cv">Cutaneous HSV or zoster flares within weeks of ART start. Generally more benign; treat with antivirals. Not a reason to stop ART.</div></div>
+<div class="card acc-amber"><div class="cl">Kaposi sarcoma-IRIS</div><div class="cv">New or worsening KS lesions (especially visceral) after ART start. Use caution with steroids in KS-IRIS — can worsen KS. Oncology referral for chemotherapy if widespread.</div></div>
+<div class="card acc-teal"><div class="cl">Leishmaniasis-IRIS</div><div class="cv">Post-kala-azar dermal leishmaniasis-like presentation after ART. More common in endemic areas. Continue ART + treat underlying infection.</div></div>
+</div>
+<hr class="div">
+<div class="bl"><div class="blab">Management principles</div></div>
+<div class="cg">
+<div class="card acc-teal"><div class="cl">Do NOT stop ART (AIII)</div><div class="cv">Continuing ART is the fundamental rule. Stopping worsens the underlying OI and long-term outcomes. Even in severe IRIS, ART is maintained.</div></div>
+<div class="card acc-teal"><div class="cl">Treat the underlying OI</div><div class="cv">Before declaring IRIS, confirm that adequate OI treatment is in place and the OI is responding.</div></div>
+<div class="card acc-amber"><div class="cl">Corticosteroids — TB-IRIS (BII)</div><div class="cv">Prednisolone 1.25mg/kg/d for 2 weeks then 0.75mg/kg/d for 2 weeks for moderate–severe TB-IRIS. Reduces symptoms, hospitalisation, and procedures. Caution: avoid in KS-IRIS and use carefully in CM-IRIS.</div></div>
+<div class="card acc-red"><div class="cl">Manage ICP in CM-IRIS</div><div class="cv">Therapeutic lumbar puncture remains key — do not rely on steroids alone for cryptococcal meningitis IRIS. Target opening pressure &lt;20 cmH2O. Repeat LP daily if needed initially.</div></div>
+</div>
+<div class="wb blue"><strong>Prevention principle:</strong> For any active OI — treat the OI first, establish a response, THEN start ART. The optimal delay window varies by pathogen. CNS OIs = longest delay. Non-CNS TB = ART within 2–8 weeks of TB treatment (CD4-dependent).</div>
+`},
+
+{id:9,cat:'cat-cv',badge:'CV & Metabolic',bc:'b-blue',title:'Cardiovascular & metabolic complications',sub:'CVD risk · Statins (REPRIEVE) · Weight · Lipids · DM · Bone',content:`
+<div class="wb blue"><strong>Key context:</strong> With effective ART, life expectancy in HIV approaches the general population — age-related comorbidities now dominate morbidity. HIV itself (even with suppression) causes chronic immune activation and inflammation that increases CVD risk independently of traditional risk factors.</div>
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'cv1')">CVD risk & statins</button>
+<button class="stab" onclick="showSub(this,'cv2')">Weight gain</button>
+<button class="stab" onclick="showSub(this,'cv3')">Lipids & DM</button>
+<button class="stab" onclick="showSub(this,'cv4')">Bone health</button>
+<button class="stab" onclick="showSub(this,'cv5')">Renal</button>
+</div>
+
+<div id="cv1" class="sp active">
+<div class="cg">
+<div class="card acc-blue"><div class="cl">CVD risk in HIV</div><div class="cv">People with HIV have 1.5–2× higher CVD risk vs. HIV-negative. Risk driven by: chronic inflammation, immune activation, ART effects (dyslipidaemia, DM, weight gain), and traditional risk factors (smoking, hypertension, DM) which occur at higher rates.</div></div>
+<div class="card acc-blue"><div class="cl">Cardiovascular risk assessment</div><div class="cv">PCE (Pooled Cohort Equations) or similar ASCVD risk tools. Apply at baseline + every 1–3 years. HIV-specific risk calculators (D:A:D) also available. Address all modifiable risk factors: smoking cessation, hypertension control, DM management, weight.</div></div>
+<div class="card acc-teal"><div class="cl">REPRIEVE trial (2023) — pitavastatin</div><div class="cv">4,983 people with HIV on ART with low-moderate CVD risk (not meeting conventional statin criteria). Pitavastatin 4mg/d vs. placebo → <strong>35% reduction in major adverse cardiovascular events (MACE)</strong> (HR 0.65, p=0.002). Primary prevention benefit in HIV patients who would not have received statins by standard guidelines.</div></div>
+<div class="card acc-teal"><div class="cl">Statin recommendations for HIV</div><div class="cv">Consider statin for primary ASCVD prevention in HIV patients aged 40–75 years even if 10-year ASCVD risk &lt;7.5% (BIII). Pitavastatin is preferred if low CVD risk (REPRIEVE data). For patients meeting standard statin criteria: follow latest ACC/AHA cholesterol guidelines.</div></div>
+</div>
+<div class="bl"><div class="blab">Statin + ARV interactions (key)</div></div>
+<table class="ct">
+<tr><th>Statin</th><th>With boosted PIs (RTV/COBI)</th><th>With EFV/other NNRTIs</th><th>With INSTIs</th></tr>
+<tr><td class="reg">Pitavastatin</td><td>No significant interaction — preferred with PIs</td><td>No interaction</td><td>Safe</td></tr>
+<tr><td class="reg">Pravastatin</td><td>Modest ↑ (ATV/r) or ↓ (LPV/r); generally usable</td><td>EFV ↓ pravastatin</td><td>Safe</td></tr>
+<tr><td class="reg">Rosuvastatin</td><td>↑ with LPV/r, DRV/r — use low dose (5–10mg max)</td><td>EFV ↓ levels</td><td>Safe at standard doses</td></tr>
+<tr><td class="reg">Atorvastatin</td><td>↑ with boosted PIs — use lowest dose (10–40mg max)</td><td>EFV ↓ levels</td><td>Safe at standard doses</td></tr>
+<tr><td class="reg">Simvastatin/lovastatin</td><td>CONTRAINDICATED with boosted PIs — risk of myopathy/rhabdomyolysis</td><td>EFV ↓ levels significantly</td><td>Safe but generally replaced by above</td></tr>
+</table>
+</div>
+
+<div id="cv2" class="sp">
+<div class="wb amber"><strong>Weight gain with ART:</strong> Significant and clinically important — particularly with INSTI-based regimens (especially in combination with TAF vs. TDF). Affects women more than men; people of Black African ancestry more than others.</div>
+<div class="cg">
+<div class="card acc-amber"><div class="cl">Which drugs most associated</div><div class="cv">Dolutegravir &gt; bictegravir &gt; raltegravir (INSTIs, in order of weight effect). TAF &gt; TDF (NRTI effect). Note: this is a class/component effect — still use preferred regimens; manage metabolically.</div></div>
+<div class="card acc-blue"><div class="cl">Management</div><div class="cv">Weight monitoring at each visit. Lifestyle counselling: diet + physical activity. Consider switching to TDF-based backbone if TAF-associated weight gain is significant and renal function permits. Consider switching to DOR/TDF-based regimen if weight gain is clinically significant on INSTI-based therapy.</div></div>
+<div class="card acc-blue"><div class="cl">Cardiovascular implications</div><div class="cv">Weight gain → dyslipidaemia, insulin resistance, hypertension → ↑ ASCVD risk. Address all metabolic consequences. This reinforces importance of REPRIEVE-type statin consideration in HIV patients.</div></div>
+</div>
+</div>
+
+<div id="cv3" class="sp">
+<div class="cg">
+<div class="card acc-blue"><div class="cl">Dyslipidaemia</div><div class="cv">Screen fasting lipids at baseline; at 3–6 months post-ART; then every 1–3 years depending on age and risk. ART effects: Boosted PIs ↑ triglycerides + LDL; EFV ↑ HDL but also LDL; INSTIs generally lipid-neutral or mild ↑ (especially with TAF). TDF associated with better lipid profile vs. TAF.</div></div>
+<div class="card acc-amber"><div class="cl">Glucose / diabetes</div><div class="cv">HbA1c is NOT recommended for DM diagnosis in people on ART — may be spuriously low due to altered RBC turnover. Use fasting glucose or oral GTT. Screen annually. Older PIs (especially LPV/r, IDV) → insulin resistance. INSTIs: some weight-related insulin resistance. Management per standard DM guidelines; metformin is first-line if tolerated.</div></div>
+<div class="card acc-teal"><div class="cl">Hypertension</div><div class="cv">HIV patients have higher hypertension prevalence. Screen at every visit. Manage per standard guidelines. Note: some ARVs interact with antihypertensives — check DDIs (especially with boosted PIs).</div></div>
+</div>
+</div>
+
+<div id="cv4" class="sp">
+<div class="cg">
+<div class="card acc-blue"><div class="cl">Osteoporosis risk in HIV</div><div class="cv">HIV increases fracture risk 2–3× vs. HIV-negative. Causes: HIV itself, ART (TDF → ↓ BMD; tenofovir-related phosphate wasting), low vitamin D, hypogonadism, low BMI, smoking, alcohol.</div></div>
+<div class="card acc-blue"><div class="cl">Screening</div><div class="cv">DXA at age 50+ (or earlier if multiple risk factors). Repeat every 2 years if osteopenia; every 5 years if normal. Vitamin D level + calcium intake assessment.</div></div>
+<div class="card acc-teal"><div class="cl">Management</div><div class="cv">Vitamin D + calcium supplementation if deficient. Exercise (weight-bearing). If osteoporosis: bisphosphonates (alendronate, zoledronic acid) — proven in HIV. Consider switching TDF → TAF to reduce ongoing bone loss (TAF has better bone safety profile). Avoid bone-density-reducing medications where possible.</div></div>
+</div>
+</div>
+
+<div id="cv5" class="sp">
+<div class="cg">
+<div class="card acc-blue"><div class="cl">CKD in HIV</div><div class="cv">2–3× higher CKD prevalence vs. HIV-negative. Causes: HIV-associated nephropathy (HIVAN), ART toxicity (TDF), hypertension, DM, aging. Screen with eGFR + urine protein at baseline and regularly.</div></div>
+<div class="card acc-amber"><div class="cl">TDF nephrotoxicity</div><div class="cv">TDF → Fanconi syndrome (proximal tubular dysfunction) — wasting of phosphate, glucose, amino acids. Monitor: eGFR, urine glucose (normoglycaemic glycosuria = early signal), urine protein, serum phosphate. If CKD stage 3+ (eGFR &lt;45): switch TDF → TAF or ABC-based; consult nephrology.</div></div>
+<div class="card acc-teal"><div class="cl">Dosing adjustments in CKD</div><div class="cv">See Appendix B of Adult ARV Guidelines for full dose adjustments by eGFR. Key: DTG, BIC, TAF: no significant dose adjustment for mild–moderate CKD. TDF: contraindicated if eGFR &lt;30. ABC: safe with CKD. Avoid TAF if eGFR &lt;15 (on tenofovir products).</div></div>
+</div>
+</div>
+`},
+
+{id:10,cat:'cat-vax',badge:'Vaccines',bc:'b-teal',title:'Immunisations in HIV',sub:'Pneumococcal · Influenza · HBV · HAV · HPV · Meningococcal · Mpox',content:`
+<div class="wb blue"><strong>Principle:</strong> People with HIV benefit from most vaccines but may have reduced responses — especially at CD4 &lt;200. Live vaccines generally safe if CD4 ≥200 + virally suppressed; avoid if CD4 &lt;200. Inactivated/subunit vaccines safe regardless of CD4.</div>
+<table class="ct">
+<tr><th>Vaccine</th><th>Recommendation</th><th>CD4 considerations</th><th>Key notes</th></tr>
+<tr><td class="reg">Pneumococcal (PCV)</td><td>PCV20 or PCV21 × 1 dose; if PCV15 used → follow with PPSV23 at ≥8 weeks (AIII)<br>Previously unvaccinated adults</td><td>All CD4 counts (AI)</td><td>Updated 2024: PCV21 now available — broader serotype coverage. Higher-valency PCVs now preferred over PPSV23 alone.</td></tr>
+<tr><td class="reg">Influenza</td><td>Inactivated influenza vaccine — annually (AI)</td><td>All CD4 counts</td><td>Standard or high-dose formulations. LAIV (live attenuated nasal spray) — AVOID in HIV (AII).</td></tr>
+<tr><td class="reg">Hepatitis B (HBV)</td><td>If non-immune (HBsAb negative): 3-dose series (AIII)<br>Standard or high-dose (40mcg)</td><td>Better response if CD4 &gt;200. Consider high-dose (40mcg Engerix-B) or 4-dose series if CD4 &lt;200</td><td>Recheck anti-HBs 1–2 months after series; revaccinate non-responders.</td></tr>
+<tr><td class="reg">Hepatitis A (HAV)</td><td>If seronegative: 2-dose HAV vaccine (AIII)<br>Priority in HCV coinfection, chronic liver disease, MSM</td><td>Better response if CD4 &gt;200</td><td>—</td></tr>
+<tr><td class="reg">HPV</td><td>HPV vaccine up to age 45 years in HIV (shared decision-making above 26) (BIII)</td><td>Prefer CD4 ≥200 if possible</td><td>3-dose series (0, 1–2, 6 months) in HIV — do not use 2-dose schedule</td></tr>
+<tr><td class="reg">Meningococcal (MenACWY)</td><td>All people with HIV: 2-dose series 8 weeks apart, then booster every 5 years (BIII)</td><td>Reduced immunogenicity at CD4 &lt;15%</td><td>MSM in urban outbreaks: some jurisdictions recommend regardless of HIV status.</td></tr>
+<tr><td class="reg">Meningococcal B (MenB)</td><td>Adolescents/young adults 16–23 years with HIV: offered with shared decision-making (CIII)<br>3-dose series in HIV (not 2-dose)</td><td>—</td><td>MenB-4C (Bexsero) or MenB-FHbp (Trumenba) — not interchangeable.</td></tr>
+<tr><td class="reg">Mpox (JYNNEOS)</td><td>All HIV patients at risk of mpox exposure — regardless of CD4 (BII)<br>2 doses 28 days apart; SQ preferred (history of keloids or age &lt;18)</td><td>JYNNEOS is live <em>non-replicating</em> — safe at all CD4 counts</td><td>ACAM2000 (replicating vaccinia) CONTRAINDICATED in HIV. Post-exposure: JYNNEOS ideally within 4 days (up to 14 days may provide benefit).</td></tr>
+<tr><td class="reg">Zoster (recombinant, RZV)</td><td>Shingrix (RZV) × 2 doses 2–6 months apart — for all HIV adults ≥50 (AI)<br>Also consider ≥19 years with CD4 &lt;200 or significantly immunocompromised</td><td>RZV is inactivated — safe at all CD4 counts. Avoid live zoster vaccine (Zostavax)</td><td>—</td></tr>
+<tr><td class="reg">COVID-19</td><td>Full primary series + boosters per current CDC schedule (AI)<br>People with advanced HIV (CD4 &lt;200): may receive additional dose 6 months after last dose</td><td>—</td><td>mRNA vaccines preferred in HIV. Annual booster recommended.</td></tr>
+<tr><td class="reg">Tdap / Td</td><td>Tdap × 1 dose if not previously vaccinated, then Td booster every 10 years (AIII)</td><td>All CD4</td><td>In pregnancy: Tdap in each pregnancy (27–36 weeks) regardless of prior vaccination</td></tr>
+<tr><td class="reg">MMR (live vaccine)</td><td>If non-immune + CD4 ≥200 + virally suppressed: 2 doses of MMR 4 weeks apart (AIII)<br>AVOID if CD4 &lt;200</td><td>CD4 ≥200 required</td><td>Do not give with VZV vaccine on same day (unless MMRV)</td></tr>
+<tr><td class="reg">Varicella (live vaccine)</td><td>If VZV-seronegative + CD4 ≥200 + suppressed VL: 2 doses 3 months apart (BIII)<br>AVOID if CD4 &lt;200</td><td>CD4 ≥200 required</td><td>—</td></tr>
+</table>
+`},
+
+{id:11,cat:'cat-adh',badge:'Adherence',bc:'b-gray',title:'Adherence, monitoring & care transitions',sub:'Assessment · Long-acting ART · Transitions · Loss to follow-up',content:`
+<div class="wb blue"><strong>Adherence principle:</strong> Clinicians should assess adherence regularly, non-judgementally, and collaboratively — not lecture. The goal is understanding individual barriers and solving them, not blaming the patient.</div>
+<div class="cg">
+<div class="card acc-gray"><div class="cl">Assess adherence — regularly</div><div class="cv">Simple questions work best: "In the past 4 weeks, how many doses did you miss?" or rate on 1–5 scale. Pharmacy refill records are useful when from a single source. Dried blood spot drug levels available at research level. Viral load remains the ultimate adherence marker.</div></div>
+<div class="card acc-gray"><div class="cl">Common barriers</div><div class="cv"><strong>Individual:</strong> forgetfulness, side effects, depression, substance use, pill fatigue, stigma<br><strong>Structural:</strong> cost, no insurance, housing instability, food insecurity, transportation<br><strong>Clinic:</strong> limited hours, complex refill processes, poor patient-provider communication</div></div>
+<div class="card acc-teal"><div class="cl">Strategies to improve adherence</div><div class="cv">• Simplify regimen (STR, once-daily)<br>• Text message reminders (strongest evidence)<br>• Pillbox + alarms<br>• Address mental health and substance use<br>• Multidisciplinary team involvement<br>• Case managers + peer support workers<br>• Financial assistance (ADAP, copay assistance)<br>• Motivational interviewing</div></div>
+<div class="card acc-blue"><div class="cl">Long-acting ART (LA CAB/RPV)</div><div class="cv">Monthly or every 2-month IM injection (Cabenuva). For virally suppressed patients with no resistance to CAB or RPV and no HBV coinfection. May reduce pill fatigue + disclosure concerns. Requires: no prior INSTI resistance, no HBV, reliable clinic attendance. <strong>Risk of resistance if doses missed</strong> — long pharmacologic tail means resistance can develop after discontinuation without oral bridge.</div></div>
+</div>
+<hr class="div">
+<div class="bl"><div class="blab">Care transitions — high-risk periods</div></div>
+<div class="cg">
+<div class="card acc-amber"><div class="cl">Paediatric → adult care</div><div class="cv">Start planning at 16 years. Identify adult HIV provider before transition. Ensure continuity of ART supply. Involve peer navigators. Adolescent-specific challenges — see Special Populations.</div></div>
+<div class="card acc-amber"><div class="cl">Postpartum transition</div><div class="cv">High-risk period: childcare, postpartum depression, breastfeeding choices. Ensure smooth transition from obstetric to primary HIV care. Bedside prescription delivery ("Meds to Beds") at discharge reduces early gaps.</div></div>
+<div class="card acc-amber"><div class="cl">Release from custody</div><div class="cv">Provide ≥30-day ART supply at release. Pre-release: register for insurance, complete ADAP application, connect to community HIV provider. Coordinate with community organisations. Substance use relapse and overdose risk — provide naloxone.</div></div>
+<div class="card acc-amber"><div class="cl">Loss to follow-up / re-engagement</div><div class="cv">Hospitalisation = re-engagement opportunity. Understand why disengagement occurred before restarting ART. Shared decision-making on barriers. Provide same-day access to ART when re-presenting. Case management outreach for persistent LTFU.</div></div>
+</div>
+`},
+,
+
+{id:14,cat:'cat-prep',badge:'PrEP',bc:'b-cyan',title:'Pre-Exposure Prophylaxis (PrEP)',sub:'FDA agents · Who qualifies · Regimen choice · Dosing · Monitoring · HIV+ on PrEP',content:`
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'prep1')">Agents & Candidates</button>
+<button class="stab" onclick="showSub(this,'prep2')">Regimen Comparison</button>
+<button class="stab" onclick="showSub(this,'prep3')">Oral PrEP Dosing</button>
+<button class="stab" onclick="showSub(this,'prep4')">Injectable PrEP</button>
+<button class="stab" onclick="showSub(this,'prep5')">Initiation & Monitoring</button>
+<button class="stab" onclick="showSub(this,'prep6')">HIV+ on PrEP</button>
+</div>
+
+<!-- TAB 1: AGENTS & CANDIDATES -->
+<div id="prep1" class="sp active">
+<div class="wb teal"><strong>PrEP = antiretrovirals for HIV-negative individuals at risk</strong> — cornerstone of HIV prevention. When taken as directed, all FDA-approved regimens are highly effective.</div>
+
+<div class="bl"><div class="blab">4 FDA-Approved Agents</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-blue"><div class="cl">TDF/FTC (Truvada) — Preferred oral</div><div class="cv">
+Tenofovir DF 300 mg / Emtricitabine 200 mg · 1 tablet daily<br>
+<strong>Indications:</strong> All sexual + injection drug exposures · Adults + adolescents ≥35 kg<br>
+Generic available · Same-day initiation usually possible<br>
+Also active against HBV ✓ · On-demand dosing option (2-1-1)
+</div></div>
+<div class="card acc-blue"><div class="cl">TAF/FTC (Descovy) — Alternative oral</div><div class="cv">
+Tenofovir AF 25 mg / Emtricitabine 200 mg · 1 tablet daily<br>
+<strong>Indications:</strong> Sexual exposures only · Adults + adolescents ≥35 kg<br>
+Preferred if renal disease, osteoporosis, or age ≤19 years<br>
+Also active against HBV ✓ · No on-demand dosing studied<br>
+Brand only — may require prior auth
+</div></div>
+<div class="card acc-teal"><div class="cl">CAB LA (Apretude) — Injectable preferred</div><div class="cv">
+Cabotegravir 600 mg IM q2 months (first 2 doses 4 wk apart)<br>
+<strong>Indications:</strong> All sexual exposures · Adults + adolescents ≥35 kg<br>
+Statistically superior to TDF/FTC (adherence advantage)<br>
+<span class="tag tw">Does NOT cover HBV</span> · No injection drug data (likely effective)<br>
+Optional oral CAB lead-in · INSTI resistance risk if discontinued
+</div></div>
+<div class="card acc-teal"><div class="cl">SC LEN (Yeztugo) — Injectable preferred · Newest</div><div class="cv">
+Lenacapavir 927 mg SC q6 months + oral loading dose (600 mg days 1–2)<br>
+<strong>Indications:</strong> All sexual exposures · Adults + adolescents ≥35 kg<br>
+FDA approved June 2025 · Statistically superior to TDF/FTC and TAF/FTC<br>
+<span class="tag tw">Does NOT cover HBV</span> · PURPOSE 4 (PWID) trial ongoing<br>
+Capsid inhibitor — different resistance profile than INSTI
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Who Should Receive PrEP — Offer to any of these candidates</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-gray"><div class="cl">Sexual risk</div><div class="cv">
+• Condomless sex with partner of unknown/positive/unsuppressed HIV status<br>
+• Multiple or anonymous sex partners<br>
+• Sex work (transactional sex) — provider or client<br>
+• Bacterial STI diagnosed in past 12 months<br>
+• Attempting conception with HIV+ partner not virally suppressed
+</div></div>
+<div class="card acc-gray"><div class="cl">Substance use / other risk</div><div class="cv">
+• Injecting drugs / sharing equipment<br>
+• Recreational drug use during sex (chemsex)<br>
+• Completing nPEP, remaining at risk → start PrEP immediately<br>
+• Self-identifies as at risk (no disclosure of specific behavior required)<br>
+• Anticipates engaging in risk behaviors soon
+</div></div>
+</div>
+<div class="wb blue"><strong>Do NOT withhold PrEP</strong> from eligible candidates who: are pregnant, inconsistently use condoms, use substances, have mental health disorders, experience intimate partner violence, or have a partner with undetectable HIV (U=U).</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab"><span class="tag tw">⚠ Contraindications</span></div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-red"><div class="cl">Absolute contraindications</div><div class="cv">
+• <strong>Confirmed HIV infection</strong> — PrEP regimens inadequate for treatment → drug resistance<br>
+• <strong>HIV exposure within past 72 hours</strong> → prescribe PEP first; transition to PrEP after 4 weeks
+</div></div>
+<div class="card acc-amber"><div class="cl">Renal thresholds</div><div class="cv">
+• TDF/FTC: Do not start if CrCl &lt;60 mL/min · Discontinue if CrCl &lt;50 mL/min<br>
+• TAF/FTC: Contraindicated if CrCl &lt;30 mL/min<br>
+• CAB LA: Increased monitoring if CrCl &lt;30 mL/min<br>
+• SC LEN: Increased monitoring if CrCl &lt;15 mL/min<br>
+<small>Verify with repeat test before discontinuing — rule out reversible causes (NSAIDs, creatine supplements)</small>
+</div></div>
+<div class="card acc-amber"><div class="cl">Drug interactions</div><div class="cv">
+• CAB LA: Contraindicated with antiseizure drugs (carbamazepine, phenytoin, phenobarbital, oxcarbazepine) and rifamycins<br>
+• SC LEN: CYP3A4/P-gp inducers reduce levels (mnemonic <strong>COPPER</strong>: Carbamazepine, Oxcarbazepine, Phenobarbital, Phenytoin, Enzalutamide, Rifampin)<br>
+• SC LEN increases levels of: GHB, ketamine, benzodiazepines, fentanyl, PDE5 inhibitors
+</div></div>
+<div class="card acc-gray"><div class="cl">CAB LA: caution</div><div class="cv">
+Silicone/implants in buttocks/hips → may impair CAB LA absorption<br>
+Consider alternative injection site or alternative PrEP
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 2: REGIMEN COMPARISON -->
+<div id="prep2" class="sp">
+<table class="ct">
+<tr><th></th><th>TDF/FTC</th><th>TAF/FTC</th><th>CAB LA</th><th>SC LEN</th></tr>
+<tr><td class="reg">Indication</td><td>All sexual + injection</td><td>Sexual only</td><td>Sexual only</td><td>Sexual only (injection under study)</td></tr>
+<tr><td class="reg">Dosing</td><td>Daily or on-demand</td><td>Daily only</td><td>IM q2m (loading: 2 doses 4 wk apart)</td><td>SC q6m + oral loading ×2 days</td></tr>
+<tr><td class="reg">Time to protection</td><td>7 days daily; 2 hrs after double-dose loading</td><td>~7 days (likely earlier)</td><td>~7 days after 1st injection</td><td>2 hrs after 2nd oral loading dose</td></tr>
+<tr><td class="reg">Renal</td><td>Avoid CrCl &lt;60; stop &lt;50</td><td>Avoid CrCl &lt;30</td><td>Monitor if &lt;30 mL/min</td><td>Monitor if &lt;15 mL/min</td></tr>
+<tr><td class="reg">Bone</td><td>Small BMD decrease; reversible ≥20 yr</td><td>Better than TDF; preferred ≤19 yr</td><td>Preferred if osteoporosis</td><td>Preferred if osteoporosis</td></tr>
+<tr><td class="reg">HBV active</td><td>✓ Yes</td><td>✓ Yes</td><td>✗ No</td><td>✗ No</td></tr>
+<tr><td class="reg">Generic</td><td>✓ Available</td><td>✗ Brand only</td><td>✗ Brand only</td><td>✗ Brand only</td></tr>
+<tr><td class="reg">Common adverse effects</td><td>Diarrhea 6%, nausea 5%</td><td>Diarrhea 5%, nausea 4%</td><td>Injection site reactions 32–81% (mostly mild, decrease over time)</td><td>ISRs 69–83% incl. nodules (grades 1–2, affected by technique)</td></tr>
+<tr><td class="reg">Lab monitoring</td><td>HIV q3m · CrCl q3m then q6–12m · STI q3–6m</td><td>Same as TDF/FTC</td><td>HIV at every injection visit (q2m) · STI q2–6m · CrCl annually</td><td>HIV at every injection visit (q6m); consider interim HIV q3m for high-risk · STI q3–6m · CrCl annually</td></tr>
+<tr><td class="reg">Key risks</td><td>Renal/bone (modest); resistance if HIV undetected</td><td>Similar to TDF/FTC; ↑ LDL slightly</td><td>INSTI resistance potential; LEVI syndrome; long drug tail after stopping</td><td>Capsid inhibitor resistance; long drug tail; ISRs; drug interactions</td></tr>
+</table>
+
+<div class="wb amber"><strong>Pregnancy:</strong> TDF/FTC and TAF/FTC may be continued throughout pregnancy and breastfeeding. CAB LA and SC LEN: no dose changes needed but data limited — use shared decision-making. HIV acquisition risk is highest in late pregnancy and early postpartum.</div>
+<div class="wb blue"><strong>Gender-affirming hormones:</strong> TDF/FTC, TAF/FTC, and CAB LA have no significant interaction with estrogen or testosterone. SC LEN may mildly increase hormone levels but no dose adjustments needed. Providing reassurance about this to transgender women improves PrEP uptake.</div>
+</div>
+
+<!-- TAB 3: ORAL DOSING -->
+<div id="prep3" class="sp">
+<div class="bl"><div class="blab">Daily Oral TDF/FTC — Standard Regimen</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-blue"><div class="cl">FDA-approved dosing</div><div class="cv">
+1 tablet daily by mouth with or without food<br>
+<strong>Minimum effective dose:</strong> 4 or more doses per week required for protection<br>
+<strong>Time to protection:</strong> 7 days of daily dosing; likely protected earlier. Or 2 hours after double (2-tablet) loading dose at initiation.
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">On-Demand PrEP (Event-Driven) — TDF/FTC only · Not FDA-approved but strongly evidence-based</div>
+<div class="wb amber">Evidence base: IPERGAY + PREVENIR studies (cisgender MSM). On-demand dosing requires planning sex by at least 2 hours in advance. Not for PWID or patients with HBV.</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-teal"><div class="cl">2-1-1 regimen — Rectal or penile exposures</div><div class="cv">
+<strong>2–24 hrs before sex:</strong> Take 2 TDF/FTC tablets (closer to 24 hrs preferred)<br>
+<strong>24 hrs after sex:</strong> Take 1 tablet<br>
+<strong>48 hrs after sex:</strong> Take 1 tablet<br>
+If sex occurs again → 1 tablet daily until 48 hrs after last act
+</div></div>
+<div class="card acc-pink"><div class="cl">2-1-1-1 regimen — Receptive vaginal exposures</div><div class="cv">
+<strong>2–24 hrs before sex:</strong> Take 2 TDF/FTC tablets (closer to 24 hrs preferred)<br>
+<strong>24 hrs after sex:</strong> Take 1 tablet<br>
+<strong>48 hrs after sex:</strong> Take 1 tablet<br>
+<strong>72 hrs after sex:</strong> Take 1 additional tablet<br>
+If sex occurs again → 1 tablet daily until 72 hrs after last act<br>
+<small>Modeling: adds extra day increases protection from ~85% to 93–98%</small>
+</div></div>
+</div>
+<div class="wb blue">On-demand TAF/FTC has NOT been studied and should not be used this way. No data guide on-demand PrEP for neovaginal or neopenile exposures. On-demand PrEP is not recommended for blood/injection exposures.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Managing Adverse Effects — Oral PrEP</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-gray"><div class="cl">Gastrointestinal effects</div><div class="cv">
+Nausea, headache, diarrhea — most common in first 1–3 months<br>
+Take with food · Use antidiarrheal agents / antiemetics as needed<br>
+Most adverse effects peak at 1 month, resolve within 3 months
+</div></div>
+<div class="card acc-amber"><div class="cl">Rash while on TDF/FTC or TAF/FTC</div><div class="cv">
+Assess for: <strong>Syphilis</strong> and <strong>Acute HIV infection</strong><br>
+Rash was not commonly reported in major TDF/FTC PrEP trials — if present, evaluate carefully
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 4: INJECTABLE PREP -->
+<div id="prep4" class="sp">
+<div class="stabs" style="margin-bottom:.7rem">
+<button class="stab2 active" onclick="showSub2(this,'inj1')">CAB LA (q2 months)</button>
+<button class="stab2" onclick="showSub2(this,'inj2')">SC LEN (q6 months)</button>
+</div>
+
+<div id="inj1" class="sp2 active">
+<div class="wb teal"><strong>CAB LA (Apretude):</strong> Statistically superior to oral TDF/FTC — advantage is adherence, not intrinsic drug potency. Preferred for all adults/adolescents ≥35 kg open to injections.</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-blue"><div class="cl">Initiation protocol</div><div class="cv">
+<strong>Oral lead-in (optional):</strong> 30 days oral CAB to assess tolerability<br>
+<strong>Injection 1:</strong> 600 mg (3 mL) deep IM gluteal<br>
+<strong>Injection 2:</strong> 4 weeks after injection 1<br>
+<strong>Continuation:</strong> 600 mg IM every 8 weeks (±1 week window)<br>
+If switching from oral PrEP: overlap 7 days of oral TDF/FTC or TAF/FTC while CAB levels rise
+</div></div>
+<div class="card acc-blue"><div class="cl">Administration technique</div><div class="cv">
+• 21-gauge × 1½ inch needle (adjust for BMI)<br>
+• Shake vial vigorously before aspiration<br>
+• Administer within 2 hours of drawing up<br>
+• Ventrogluteal (preferred) or dorsogluteal, 90° angle, Z-track method<br>
+• Not appropriate for self-injection<br>
+• Thigh injection: ↓10% bioavailability — avoid if possible
+</div></div>
+<div class="card acc-amber"><div class="cl">Missed injections</div><div class="cv">
+<strong>Window:</strong> ±1 week from planned date (i.e., within 9 weeks of last)<br>
+<strong>Planned miss:</strong> Start oral PrEP when injection is due; continue until CAB LA resumed<br>
+<strong>>12 wk since last dose:</strong> Restart 4-week loading schedule or stay on oral PrEP<br>
+Bridge: Oral CAB (Vocabria) preferred; TDF/FTC or TAF/FTC also acceptable
+</div></div>
+<div class="card acc-red"><div class="cl">Discontinuation — "Long Tail"</div><div class="cv">
+CAB levels persist and slowly decline over a <strong>median 43.7 wk (men)</strong> and <strong>67.3 wk (women)</strong> after last injection<br>
+Sub-therapeutic levels → risk of INSTI-resistant HIV if exposed<br>
+<strong>If at ongoing HIV risk:</strong> start oral PrEP 2 months after last injection; continue ≥1 year<br>
+Reassuring: no INSTI resistance mutations in HPTN 083 tail-phase infections
+</div></div>
+</div>
+<div class="wb amber"><strong>Drug interactions:</strong> Avoid with strong CYP inducers — carbamazepine, oxcarbazepine, phenobarbital, phenytoin, rifamycins significantly reduce CAB levels.</div>
+</div>
+
+<div id="inj2" class="sp2">
+<div class="wb teal"><strong>SC LEN (Yeztugo):</strong> Capsid inhibitor — FDA approved June 2025. Statistically superior to both TDF/FTC AND TAF/FTC. Twice-yearly dosing is a major adherence advantage.</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-blue"><div class="cl">Initiation protocol</div><div class="cv">
+<strong>Day 1:</strong> 927 mg SC (two 1.5 mL injections in separate sites) <em>plus</em> 600 mg oral (two 300 mg tablets)<br>
+<strong>Day 2:</strong> 600 mg oral (two 300 mg tablets)<br>
+<strong>Continuation:</strong> 927 mg SC every 26 weeks (±2 weeks)<br>
+<small>Day 2 oral dose is essential — if missed, time to protection extends to up to 28 days</small><br>
+If switching from oral PrEP: protected from HIV on day of first injection
+</div></div>
+<div class="card acc-blue"><div class="cl">Administration technique</div><div class="cv">
+• 22-gauge, ½-inch needle for SC injection<br>
+• Preferred site: abdomen; alternates: lateral thigh, upper arm, buttocks<br>
+• Administer at 90° angle; place 2 injections on opposite sides of body<br>
+• <strong>Ice packs 10 min before + after</strong> significantly reduces ISR discomfort<br>
+• Administer within 4 hours of drawing up; do NOT shake vial<br>
+• Not for self-injection — administer by healthcare professional
+</div></div>
+<div class="card acc-amber"><div class="cl">Injection site reactions (ISRs)</div><div class="cv">
+Pain, erythema, swelling, nodules, induration, pruritus — 69–83% of patients<br>
+Most are grades 1–2; rarely led to discontinuation<br>
+<strong>Subcutaneous nodules</strong> are common — median duration 183 days (PURPOSE 2)<br>
+Generally painless but palpable (sometimes visible)<br>
+Proper technique (90° angle, ice packs) significantly reduces ISR severity
+</div></div>
+<div class="card acc-amber"><div class="cl">Missed injections</div><div class="cv">
+<strong>Window:</strong> ±2 weeks (i.e., within 28 weeks of last injection)<br>
+<strong>>28 weeks late:</strong> Bridge with oral LEN 300 mg q7 days (up to 26 weeks max)<br>
+<strong>>52 weeks since last injection:</strong> Transition to another PrEP regimen<br>
+If oral LEN unavailable for bridging → use oral TDF/FTC or TAF/FTC
+</div></div>
+<div class="card acc-red"><div class="cl">Discontinuation — "Long Tail"</div><div class="cv">
+LEN levels begin declining 6 months after last injection; decline over next 6 months<br>
+Risk of capsid inhibitor–resistant HIV during this period if exposed<br>
+<strong>If at ongoing risk:</strong> start oral PrEP 6 months after last injection; continue ≥6 months
+</div></div>
+<div class="card acc-amber"><div class="cl">Key drug interactions (SC LEN)</div><div class="cv">
+CYP3A4 inducers reduce LEN levels — remember <strong>COPPER</strong>:<br>
+<strong>C</strong>arbamazepine · <strong>O</strong>xcarbazepine · <strong>P</strong>henobarbital (+ primidone) · <strong>P</strong>henytoin · <strong>E</strong>nzalutamide · <strong>R</strong>ifampin<br>
+LEN <em>increases</em> levels of: GHB, ketamine, benzodiazepines, fentanyl, nitazenes, PDE5 inhibitors<br>
+<span class="tag tw">DANGER:</span> Amyl nitrates ("poppers") + PDE5 inhibitors + SC LEN → severe BP drop risk
+</div></div>
+</div>
+</div>
+</div>
+
+<!-- TAB 5: INITIATION & MONITORING -->
+<div id="prep5" class="sp">
+<div class="bl"><div class="blab">Before Initiating PrEP — Baseline Assessment</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-red"><div class="cl">Assess for HIV exposure / acute infection</div><div class="cv">
+• Symptoms of acute HIV in past 6 weeks (febrile, flu-like, mono-like)<br>
+• Any exposure in past 72 hours → prescribe PEP first<br>
+• Perform: HIV-1/2 Ag/Ab combination immunoassay + HIV RNA (to rule out acute HIV even without symptoms — individuals may not disclose risk)<br>
+• Same-day initiation: rapid HIV test + laboratory-based Ag/Ab; ensure results acted on within 7 days
+</div></div>
+<div class="card acc-blue"><div class="cl">Baseline labs (all candidates within 1 week before starting)</div><div class="cv">
+HIV-1/2 Ag/Ab + HIV RNA · Serum creatinine / CrCl · Pregnancy test (if applicable)<br>
+HBV serologies (HBsAg, anti-HBs, anti-HBc) · HCV serology<br>
+Syphilis testing · Gonorrhea + Chlamydia NAATs (all exposure sites)<br>
+Serum liver enzymes · Urinalysis<br>
+HAV serology (MSM and high-risk)<br>
+<small>Initiate PrEP while awaiting results if no acute HIV symptoms, no renal disease, no HIV exposure in past 72 hrs</small>
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Same-Day PrEP Initiation — Strongly Recommended</div>
+<div class="wb teal">Same-day initiation is safe and associated with better engagement in care. Delayed initiation → significant loss to follow-up.</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-teal"><div class="cl">Criteria for same-day start (while awaiting labs)</div><div class="cv">
+✓ No signs/symptoms of acute HIV in past 6 weeks<br>
+✓ No history of renal disease<br>
+✓ No HIV exposure in past 72 hours requiring PEP<br>
+✓ Rapid HIV test negative (lab-based Ag/Ab + HIV RNA must be followed within 7 days)<br>
+<br>
+Do NOT delay PrEP if patient may be in HIV testing window period (&gt;72 hrs post-exposure but still seroconverting) — starting PrEP while awaiting window to close is appropriate. Repeat HIV testing 1 month after initiation.
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Ongoing Monitoring — by regimen</div>
+<table class="ct">
+<tr><th>Test</th><th>Oral PrEP (TDF/FTC or TAF/FTC)</th><th>CAB LA</th><th>SC LEN</th></tr>
+<tr><td class="reg">HIV Ag/Ab</td><td>Every 3 months</td><td>Every injection visit (q2m)</td><td>Every injection visit (q6m); consider interim q3m in high-risk</td></tr>
+<tr><td class="reg">HIV RNA</td><td>Only if: symptoms of acute HIV, PrEP interruption &gt;1 wk with exposure, or inconsistent adherence</td><td>At end of oral lead-in; at injection visit if delayed without bridging</td><td>At 1st injection; if delayed without bridging</td></tr>
+<tr><td class="reg">Renal (CrCl)</td><td>3 months after start, then q6–12m; more often if &gt;40 yr, DM, HTN</td><td>Annually</td><td>Annually</td></tr>
+<tr><td class="reg">STI screen</td><td>Every 3–6 months based on risk</td><td>Every 2–6 months</td><td>Every 3–6 months</td></tr>
+<tr><td class="reg">HCV</td><td>Annually if at risk</td><td>Annually if at risk</td><td>Annually if at risk</td></tr>
+<tr><td class="reg">Urinalysis</td><td>Annually</td><td>—</td><td>—</td></tr>
+<tr><td class="reg">Pregnancy</td><td>Assess at every visit</td><td>Assess at every visit</td><td>Assess at every visit</td></tr>
+</table>
+<div class="wb blue"><strong>HBV and injectable PrEP:</strong> Before switching from oral to CAB LA or SC LEN, check HBV serologies if unknown. Stopping TDF/FTC or TAF/FTC can cause severe HBV flare in patients with chronic HBV. These patients must continue oral tenofovir (or other HBV treatment) while using injectable PrEP.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Adherence pearls</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-teal"><div class="cl">Oral PrEP adherence</div><div class="cv">
+Minimum 4 doses/week required for protection<br>
+On-demand PrEP is a valid alternative when daily is not preferred<br>
+Adherence declines when visit frequency drops (especially in adolescents)<br>
+Long-acting injectable preferred when oral adherence is a challenge
+</div></div>
+<div class="card acc-teal"><div class="cl">Injectable PrEP adherence</div><div class="cv">
+On-time injections are essential — late/missed injections cause viral breakthrough<br>
+Implement appointment reminders and call-backs<br>
+Oral bridging available if injection delayed (oral CAB for CAB LA; oral LEN or TDF/FTC for SC LEN)<br>
+Educate patients on the "pharmacokinetic tail" before any planned discontinuation
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 6: HIV+ ON PREP -->
+<div id="prep6" class="sp">
+<div class="wb red"><strong>Critical:</strong> PrEP regimens are inadequate for treating HIV. Continued use in a person with undiagnosed HIV → drug resistance. Vigilance is essential.</div>
+
+<div class="bl"><div class="blab">PrEP Failure — Why it happens</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-amber"><div class="cl">Causes of HIV acquisition on PrEP</div><div class="cv">
+<strong>Most common:</strong> Suboptimal adherence to oral PrEP or missed/late injections<br>
+<strong>Unrecognized acute HIV at PrEP initiation</strong> — highest risk for resistance mutations<br>
+Rare causes: exposure to resistant virus · extremely high viral inoculum · pharmacokinetic variability<br>
+<br>
+CAB LA failures: 6 occurred with on-time injections in HPTN 083; 3 had faster drug absorption/decline<br>
+SC LEN failures: 2 seroconversions in PURPOSE 2 — both with capsid inhibitor resistance; cause under investigation<br>
+SC LEN + PURPOSE 1: ZERO infections (100% protection in cisgender women)
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Diagnosing HIV in a Patient on PrEP — Interpreting results</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-red"><div class="cl">Reactive Ag/Ab + any HIV RNA level → Confirmed HIV</div><div class="cv">
+Initiate ART immediately while awaiting resistance results<br>
+Assess for adherence gaps, acute HIV symptoms, recent risk exposures
+</div></div>
+<div class="card acc-red"><div class="cl">Non-reactive Ag/Ab + HIV RNA ≥200 copies/mL → Presumptive acute HIV</div><div class="cv">
+Diagnose acute HIV · Perform HIV genotype · Start ART<br>
+Advise refrain from sex (or condoms) until ruled out
+</div></div>
+<div class="card acc-amber"><div class="cl">Ambiguous results (non-reactive Ag/Ab + HIV RNA &lt;200; or reactive Ag/Ab + negative differentiation + negative RNA)</div><div class="cv">
+Repeat HIV testing in days — may resolve if early infection or technical issue<br>
+If persists: continue PrEP OR intensify to full ART; consult experienced HIV provider<br>
+Do not interrupt PrEP — if person doesn't have HIV, leaving them unprotected is harmful
+</div></div>
+<div class="card acc-red"><div class="cl">LEVI Syndrome (CAB LA specific)</div><div class="cv">
+<strong>Long-Acting Early Viral Inhibition</strong> — CAB LA blunts HIV replication<br>
+Median 98-day delay (range 35–185 days) from HIV acquisition to positive Ag/Ab (HPTN 083)<br>
+Characterized by: low/undetectable HIV RNA, diminished/delayed Ab production, usually asymptomatic<br>
+Confirmatory results can remain negative/indeterminate up to 1 year after diagnosis<br>
+<span class="tag tw">Expert consultation mandatory</span> — call CEI Line: 1-866-637-2342
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">ART Selection Once HIV Confirmed on PrEP</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-red"><div class="cl">Regimen by PrEP type — start immediately, adjust when resistance results return</div><div class="cv">
+<strong>On oral TDF/FTC or TAF/FTC:</strong> Start 3-drug INSTI-based ART (add DTG or BIC) — most failures are wild-type virus; M184V/I (FTC resistance) most common mutation; K65R (tenofovir) is rare and has minimal clinical impact<br><br>
+<strong>On CAB LA:</strong> Start <span class="tag tw">PI-based regimen</span> (e.g., DRV/r or DRV/c + 2 NRTIs) while awaiting resistance results — INSTI resistance found in 5/9 participants with results in HPTN 083. Switch to INSTI if genotype shows sensitivity.<br><br>
+<strong>On SC LEN:</strong> Start any preferred INSTI-based ART regimen. In PURPOSE 2 seroconversions, HIV Ag/Ab positivity was not delayed — standard testing worked.
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Discontinuing PrEP</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-gray"><div class="cl">Valid reasons to stop</div><div class="cv">
+• Confirmed HIV infection → switch to full ART immediately<br>
+• HIV risk no longer present (change in behavior/relationship)<br>
+• Renal dysfunction (CrCl &lt;50 for TDF; &lt;30 for TAF)<br>
+• Persistent non-adherence to testing requirements despite repeated engagement attempts<br>
+• Repeated missed injections without bridging (injectable PrEP)
+</div></div>
+<div class="card acc-amber"><div class="cl">Stopping with recent HIV exposure</div><div class="cv">
+Continue oral PrEP until:<br>
+• 48 hrs after last <strong>rectal</strong> exposure, or<br>
+• 72 hrs after last <strong>vaginal receptive</strong> exposure<br>
+<br>
+HBV+ patients on TDF/FTC or TAF/FTC: monitor closely for hepatic flare — develop alternative HBV treatment plan before stopping
+</div></div>
+</div></div>
+</div>
+`},
+
+{id:'pep',cat:'cat-pep',badge:'PEP',bc:'b-red',title:'Post-Exposure Prophylaxis (PEP)',sub:'Occupational · Non-occupational · Sexual assault · 28-day regimens · HBV/HCV management',content:`
+<div class="wb red"><strong>HIV exposure is a medical emergency.</strong> Administer the first PEP dose ideally within 2 hours — never later than 72 hours after exposure. Effectiveness decreases rapidly after 2 hours. Assessment, baseline testing, and source evaluation occur <em>after</em> the first dose is given.</div>
+
+<div class="stabs">
+<button class="stab active" onclick="showSub(this,'pep1')">Exposure & Risk</button>
+<button class="stab" onclick="showSub(this,'pep2')">Regimens</button>
+<button class="stab" onclick="showSub(this,'pep3')">Baseline Testing</button>
+<button class="stab" onclick="showSub(this,'pep4')">Source & Follow-up</button>
+<button class="stab" onclick="showSub(this,'pep5')">HBV / HCV</button>
+</div>
+
+<!-- TAB 1: EXPOSURE & RISK -->
+<div id="pep1" class="sp active">
+<div class="bl"><div class="blab">Exposure types that warrant PEP</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-red"><div class="cl">Occupational — PEP always indicated</div><div class="cv">
+• Percutaneous break via sharp contaminated with blood, visibly bloody fluid, or other infectious material<br>
+• Mucocutaneous splash (eye, nose, mouth) with blood or infectious material<br>
+• Non-intact skin (dermatitis, abrasion, wound) exposure to blood<br>
+• Bite from patient with visible oral bleeding causing bleeding in exposed worker<br>
+<br>
+<span class="tag tw">PEP NOT indicated:</span> Saliva without visible blood (including being spat on)
+</div></div>
+<div class="card acc-red"><div class="cl">Non-occupational / Sexual assault — PEP indicated</div><div class="cv">
+• Receptive or insertive vaginal or anal intercourse<br>
+• Needle sharing (drug use)<br>
+• Penetrating needlestick with hollow-bore needle + blood exposure<br>
+• Human bite with visible blood exchange (both parties)<br>
+• Sexual assault: direct mucosal contact with semen, vaginal fluids, or blood of assailant — with or without visible injury<br>
+• Broken skin/mucous membranes in contact with assailant's blood, semen, or vaginal fluids
+</div></div>
+<div class="card acc-gray"><div class="cl">Lower risk — assess case-by-case</div><div class="cv">
+Oral sex (receptive or insertive) with or without ejaculation — consider if risk-enhancing factors present:<br>
+• Source has high viral load<br>
+• Non-intact oral mucosa (lesions, gingivitis)<br>
+• Frank blood exposure<br>
+• STI present in source or exposed individual
+</div></div>
+<div class="card acc-teal"><div class="cl">PEP NOT indicated (negligible risk)</div><div class="cv">
+• Kissing, spitting, throwing body fluids<br>
+• Oral-to-oral resuscitation without mucosal damage<br>
+• Human bites without blood exchange<br>
+• Solid-bore needle exposure (tattoo needles, lancets) not in recent contact with blood<br>
+• Mutual masturbation without skin breakdown or blood exposure<br>
+• Saliva/sweat/tears/non-bloody urine or feces
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Risk per 10,000 exposures from HIV+ source (CDC data)</div>
+<table class="ct">
+<tr><th>Exposure type</th><th>Risk / 10,000</th></tr>
+<tr><td class="reg">Receptive anal intercourse</td><td>138</td></tr>
+<tr><td class="reg">Needle sharing (injection drug use)</td><td>63</td></tr>
+<tr><td class="reg">Percutaneous needlestick (occupational)</td><td>23</td></tr>
+<tr><td class="reg">Insertive anal intercourse</td><td>11</td></tr>
+<tr><td class="reg">Receptive penile-vaginal intercourse</td><td>8</td></tr>
+<tr><td class="reg">Insertive penile-vaginal intercourse</td><td>4</td></tr>
+<tr><td class="reg">Oral sex</td><td>Low — rarely documented</td></tr>
+<tr><td class="reg">Biting / spitting / sharing sex toys</td><td>Negligible</td></tr>
+</table>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Factors that increase transmission risk</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-amber"><div class="cl">Source-related</div><div class="cv">
+• High viral load (especially acute/early HIV — 8–12× higher risk)<br>
+• Not on ART or incomplete viral suppression<br>
+• Presence of STIs, genital/anorectal ulcers<br>
+• Lack of male circumcision (for insertive exposure)
+</div></div>
+<div class="card acc-amber"><div class="cl">Exposure-related</div><div class="cv">
+• Deep penetrating wound, hollow-bore needle, needle from artery/vein<br>
+• Presence of blood on device<br>
+• Genitorectal or anogenital trauma (especially in sexual assault)<br>
+• Non-intact oral mucosa during oral sexual exposure
+</div></div>
+</div>
+<div class="wb teal"><strong>U=U applies:</strong> If source is confirmed on ART with undetectable viral load (HIV RNA &lt;200 copies/mL) at time of consensual sexual exposure — transmission risk is effectively zero. PEP may be discontinued in this scenario; if requested by the exposed person, it should not be denied.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Timing — the 72-hour rule</div>
+<div class="cg" style="grid-template-columns:1fr 1fr 1fr">
+<div class="card acc-teal"><div class="cl">Ideal: within 2 hours</div><div class="cv">Highest efficacy — start immediately without waiting for labs, source status, or full evaluation</div></div>
+<div class="card acc-amber"><div class="cl">Acceptable: up to 72 hours</div><div class="cv">Efficacy decreases over time. Administer first dose; evaluate exposure and source in parallel.</div></div>
+<div class="card acc-red"><div class="cl">After 72 hours — do NOT start PEP</div><div class="cv">HIV infection may already be established. Starting PEP then stopping at 28 days risks viral rebound and ART resistance. Offer HIV testing and serial follow-up instead.</div></div>
+</div></div>
+</div>
+
+<!-- TAB 2: REGIMENS -->
+<div id="pep2" class="sp">
+<div class="bl"><div class="blab">Preferred PEP Regimens (weight ≥40 kg) — 28 days</div>
+<table class="ct">
+<tr><th>Regimen</th><th>Dosing</th><th>Notes</th></tr>
+<tr><td class="reg">BIC/TAF/FTC (Biktarvy) ⭐ Preferred single tablet</td><td>1 tablet once daily</td><td>Lowest discontinuation rates; minimal adverse effects; active against HIV-2; preferred for most</td></tr>
+<tr><td class="reg">TDF/FTC (Truvada) + DTG (Tivicay)</td><td>TDF/FTC 1 tablet daily + DTG 50 mg daily</td><td>High completion rates; DTG safe throughout pregnancy (teratogenicity concern removed); limit metformin to 1 g/day with DTG</td></tr>
+<tr><td class="reg">TDF/FTC (Truvada) + RAL (Isentress)</td><td>TDF/FTC 1 tablet daily + RAL 400 mg BID <em>or</em> RAL HD 1200 mg daily</td><td>Good tolerability; avoid Mg/Al antacids with RAL; RAL HD not for pregnant patients; twice-daily dosing affects adherence</td></tr>
+<tr><td class="reg">3TC may substitute FTC in either multi-tablet regimen above</td><td>3TC 300 mg daily</td><td>Equivalent efficacy; available as TDF/3TC (Cimduo)</td></tr>
+</table>
+<div class="wb amber"><strong>Drug-drug interactions:</strong> Avoid divalent cations (Ca, Mg, Al, Fe) concurrently with DTG or RAL. GI side effects are common with TDF/FTC (nausea, bloating) — counsel patients; a "double-up" missed dose is not needed — take as soon as remembered within 24 hrs.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Alternative PEP Regimens (weight ≥40 kg)</div>
+<table class="ct">
+<tr><th>Regimen</th><th>Notes / Caveats</th></tr>
+<tr><td class="reg">EVG/COBI/FTC/TDF (Stribild)</td><td>Contraindicated if CrCl &lt;70 mL/min; avoid in pregnancy (COBI contraindicated); high P450 DDI potential</td></tr>
+<tr><td class="reg">TDF/FTC + DRV/r (Prezista/Norvir) 800/100 mg daily</td><td>DRV/r + 2 NRTIs — acceptable if preferred regimens unavailable; PI-based; dose-adjust DRV in pregnancy (600 mg BID)</td></tr>
+</table>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Special populations</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-pink"><div class="cl">Pregnancy / trying to conceive</div><div class="cv">
+<span class="tag tt">Preferred:</span> TDF/FTC + DTG <em>or</em> TDF/FTC + RAL (A2)<br>
+<span class="tag tn">Alternative:</span> BIC/TAF/FTC (A3)<br>
+DTG is safe throughout pregnancy — prior teratogenicity concern removed (Zash 2022)<br>
+RAL HD should NOT be used in pregnancy<br>
+Avoid COBI-containing regimens<br>
+Advise avoiding breast/chestfeeding for 3 months after exposure
+</div></div>
+<div class="card acc-amber"><div class="cl">Impaired renal function</div><div class="cv">
+Do NOT start TDF/FTC if confirmed CrCl &lt;60 mL/min<br>
+Discontinue TDF/FTC if CrCl &lt;50 mL/min<br>
+Switch to a TAF-containing regimen (BIC/TAF/FTC) in these cases
+</div></div>
+<div class="card acc-blue"><div class="cl">Pediatric (weight &lt;40 kg)</div><div class="cv">
+<strong>Preferred (≥14 kg):</strong> BIC/TAF/FTC (lower strength tablet 30/15/120 mg for 14–&lt;25 kg)<br>
+<strong>Preferred (≥2 yr, cannot swallow):</strong> TDF + FTC + RAL (weight-based dosing)<br>
+<strong>Infants 4 wk–&lt;2 yr:</strong> ZDV oral solution + 3TC oral solution + RAL or LPV/r<br>
+Include antiemetics in starter packs for children
+</div></div>
+<div class="card acc-red"><div class="cl">ARV medications to AVOID for PEP</div><div class="cv">
+<span class="tag tw">Avoid:</span> ABC (hypersensitivity — HLA-B*5701 needed), EFV (neuropsychiatric), NVP (hepatotoxicity/SJS), IDV, NFV (poorly tolerated), MVC (R5-tropic only), ZDV (in adults — mitochondrial toxicity; still used in pediatric PEP)<br>
+Note: ZDV still recommended for perinatal transmission prevention
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">PEP-in-Pocket (PIP) and starter packs</div>
+<div class="cg" style="grid-template-columns:1fr 1fr 1fr">
+<div class="card acc-gray"><div class="cl">PEP-in-Pocket</div><div class="cv">Pre-prescribed PEP for individuals with anticipated low-frequency, high-risk exposures. Studies show participants initiate PEP significantly sooner than those without a prescription. Store medication clean and dry.</div></div>
+<div class="card acc-gray"><div class="cl">Starter pack (non-occupational)</div><div class="cv">Provide 7-day supply if full 28-day course cannot be given. Instruct on plan to obtain remainder before day 7. Counsel that starter pack ≠ full course — follow-up required.</div></div>
+<div class="card acc-teal"><div class="cl">Sexual assault (NY State law)</div><div class="cv">Hospital clinicians are required by law to provide a FULL 28-day PEP regimen to all sexual assault patients regardless of age (effective February 3, 2026). Do not provide only a 7-day starter pack for sexual assault.</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Extending PEP beyond 28 days — rare circumstances only</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-amber"><div class="cl">Only extend if:</div><div class="cv">
+• Exposed individual has indeterminate HIV result or signs/symptoms of acute retroviral syndrome at week 4<br>
+• Exposed individual is pregnant with high probability of HIV exposure (viral rebound risk)<br>
+Consult experienced HIV provider in both cases. No data support routine extension.
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 3: BASELINE TESTING -->
+<div id="pep3" class="sp">
+<div class="wb blue">Baseline testing should be performed at time of PEP initiation (no later than 72 hours after exposure). Administer first PEP dose before or simultaneously — do not delay treatment to await results.</div>
+
+<div class="bl"><div class="blab">Required baseline tests — all exposure types</div>
+<table class="ct">
+<tr><th>Test</th><th>Indication</th></tr>
+<tr><td class="reg">HIV-1/2 Ag/Ab combination immunoassay</td><td>All exposures — establishes HIV status at time of exposure. Rapid oral tests NOT recommended (insufficient sensitivity for acute infection)</td></tr>
+<tr><td class="reg">Serum liver enzymes (ALT/AST), BUN, creatinine</td><td>All exposures</td></tr>
+<tr><td class="reg">CBC</td><td>All exposures (required if ZDV is part of regimen)</td></tr>
+<tr><td class="reg">Pregnancy test</td><td>All individuals of childbearing capacity</td></tr>
+<tr><td class="reg">Hepatitis B serology — triple panel (HBsAg + anti-HBc + anti-HBs)</td><td>All exposures — guides HBV PEP decisions; if anti-HBs ≥10 mIU/mL or chronic HBV known, no HBV intervention needed</td></tr>
+<tr><td class="reg">HCV antibody (± HCV RNA)</td><td>All exposures — see HBV/HCV tab for details</td></tr>
+<tr><td class="reg">Rapid plasma reagin (RPR) for syphilis</td><td>Sexual exposures</td></tr>
+<tr><td class="reg">Gonorrhea/Chlamydia NAAT (site-specific)</td><td>Sexual exposures (not recommended in sexual assault adults — see below)</td></tr>
+<tr><td class="reg">Trichomoniasis NAAT</td><td>Sexual exposures</td></tr>
+</table>
+<div class="wb amber"><strong>Sexual assault — STI testing caveat:</strong> In adults, do NOT perform routine baseline GC/CT/trich/syphilis testing — results reflect pre-assault status and may be used to bias a jury. Provide empiric treatment for gonorrhea, chlamydia, and trichomoniasis. In children aged 2–12 years, DO perform baseline STI testing (repetitive abuse possible).</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">If baseline HIV test is reactive</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-red"><div class="cl">Do not stop PEP — continue while confirming</div><div class="cv">
+Continue PEP regimen until HIV-1/HIV-2 Ab differentiation immunoassay or HIV-1 RNA confirms or rules out HIV infection.<br>
+If confirmed positive → PEP regimen becomes ART → refer immediately to experienced HIV care provider for rapid ART initiation.<br>
+If reactive Ag/Ab but negative differentiation + negative RNA → likely false positive; discontinue PEP.
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Sequential HIV testing schedule</div>
+<table class="ct">
+<tr><th>Timepoint</th><th>Test</th><th>Notes</th></tr>
+<tr><td class="reg">Baseline (at PEP start)</td><td>HIV Ag/Ab combination immunoassay</td><td>Not to document seroconversion — to document prior HIV status</td></tr>
+<tr><td class="reg">Week 4</td><td>HIV Ag/Ab combination immunoassay + routine labs</td><td>Preferred in-person visit. Continue PEP to full 28 days.</td></tr>
+<tr><td class="reg">Week 12</td><td>HIV Ag/Ab combination immunoassay</td><td>Final recommended test. Seroconversion rarely occurs after 12 weeks.</td></tr>
+<tr><td class="reg">Weeks 3–6 (if HCV concern)</td><td>HCV RNA</td><td>Can detect acute HCV before antibody seroconverts — see HBV/HCV tab</td></tr>
+</table>
+<div class="wb teal">Serial HIV testing at 4 and 12 weeks is recommended even if PEP was declined. HIV testing at 6 months is no longer routinely recommended — modern Ag/Ab assays are sufficiently sensitive.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Patient education checklist — address all before discharge</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-blue"><div class="cl">Medication counseling</div><div class="cv">
+• Why first dose is given immediately<br>
+• How and when to take PEP (timing, food requirements)<br>
+• Importance of completing full 28 days — incompletion risks seroconversion<br>
+• If dose missed: do NOT double up — take as soon as remembered within 24 hrs<br>
+• Possible adverse effects and what to do<br>
+• How to access remaining medication supply
+</div></div>
+<div class="card acc-blue"><div class="cl">Clinical counseling</div><div class="cv">
+• Symptoms of acute HIV infection (flu/mono-like illness, fever, rash, lymphadenopathy, arthralgias)<br>
+• Seek care immediately if acute HIV symptoms develop<br>
+• Serial HIV testing schedule and purpose<br>
+• "Window period" — negative baseline does not rule out pre-existing infection<br>
+• Transition to PrEP if ongoing risk — candidates can start immediately after completing PEP
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 4: SOURCE & FOLLOW-UP -->
+<div id="pep4" class="sp">
+<div class="wb blue">The HIV status of the source should NOT be the primary focus during initial PEP administration. Start PEP first. Source evaluation guides whether to continue PEP for the full 28 days.</div>
+
+<div class="bl"><div class="blab">Source HIV testing — when available</div>
+<table class="ct">
+<tr><th>Source status</th><th>Action</th></tr>
+<tr><td class="reg">Source available + unknown HIV status</td><td>Obtain consent; test with HIV Ag/Ab combination immunoassay (NOT rapid oral test). If reactive: confirm with differentiation immunoassay. If possible HIV exposure in past 4 weeks: also test HIV-1 RNA (window period risk).</td></tr>
+<tr><td class="reg">Source confirms HIV negative (no recent exposure)</td><td>Discontinue PEP once confirmed</td></tr>
+<tr><td class="reg">Source negative Ag/Ab but reports HIV exposure in past 4 weeks</td><td>Continue PEP; add HIV-1 RNA to source testing. If RNA negative → stop PEP. If RNA positive → complete 28-day course.</td></tr>
+<tr><td class="reg">Source HIV positive (confirmed or suspected)</td><td>Obtain viral load, ART history, and resistance profile if available. Consult experienced HIV provider to optimize PEP regimen. Do NOT delay first PEP dose while gathering this information.</td></tr>
+<tr><td class="reg">Source positive + undetectable VL + on ART (consensual sex)</td><td>U=U applies — may discontinue PEP. However, if exposed person requests PEP, do not deny.</td></tr>
+<tr><td class="reg">Source unavailable / unknown</td><td>Assume source has HIV until proven otherwise. Recommend exposed individual complete full 28-day course.</td></tr>
+</table>
+<div class="wb amber"><strong>Rapid oral HIV tests should NOT be used for source testing</strong> — insufficient sensitivity for recent infection. Use laboratory-based or POC Ag/Ab combination immunoassay only.</div>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Follow-up schedule</div>
+<table class="ct">
+<tr><th>Timepoint</th><th>Contact type</th><th>Actions</th></tr>
+<tr><td class="reg">48 hours after PEP start</td><td>Telephone or in-person</td><td>Assess medication tolerance; confirm medication access; assess adverse effects; reinforce adherence</td></tr>
+<tr><td class="reg">Week 2</td><td>Telephone or in-person</td><td>Adverse effect check; confirm completion plan; STI testing at week 2 for sexual exposures</td></tr>
+<tr><td class="reg">Week 4</td><td>In-person preferred</td><td>HIV Ag/Ab test; routine labs (LFTs, creatinine, CBC if indicated); HCV RNA if source had HCV; pregnancy test if applicable</td></tr>
+<tr><td class="reg">Week 12</td><td>In-person</td><td>Final HIV Ag/Ab test; HCV antibody if source had HCV; transition to PrEP discussion if ongoing risk</td></tr>
+</table>
+</div>
+
+<hr class="div">
+<div class="bl"><div class="blab">If PEP is declined by exposed person — still do:</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-gray"><div class="cl">Document and arrange follow-up</div><div class="cv">
+• Explain 72-hour window and give instructions to access PEP if they change mind<br>
+• Describe symptoms of acute retroviral syndrome<br>
+• Provide contact information for medical care<br>
+• Arrange serial HIV testing at weeks 4 and 12<br>
+• Document refusal in medical record<br>
+• Provide referral for counseling / trauma care if sexual assault
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">Transition to PrEP after PEP completion</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-teal"><div class="cl">Candidates for immediate PrEP after PEP</div><div class="cv">
+Individuals who report ongoing high-risk exposures should be offered PrEP:<br>
+• Start immediately if PEP not indicated for current exposure and HIV negative<br>
+• Start at PEP completion once HIV negative status confirmed at week 4 test<br>
+Repeated PEP requests are a strong signal that the person needs PrEP — do not dismiss. Refer if PrEP not available on-site.
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">PEP on PrEP — special scenario</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-amber"><div class="cl">Person on PrEP with daily adherence requests PEP after sexual exposure</div><div class="cv">
+Additional ARVs for PEP are NOT warranted in most situations for daily PrEP users (consistent adherence = 99% effective).<br>
+<strong>Consider PEP if:</strong> Recently started PrEP, inconsistent adherence, on-demand dosing, source has known resistance to PrEP components, or source viral load unsuppressed (&gt;200 copies/mL).<br>
+A request for PEP from a consistently adherent daily PrEP user after a low- or zero-risk exposure should not be accommodated.
+</div></div>
+</div></div>
+</div>
+
+<!-- TAB 5: HBV / HCV -->
+<div id="pep5" class="sp">
+<div class="bl"><div class="blab">HBV — baseline testing</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-amber"><div class="cl">Triple panel for exposed individual (within 48 hrs)</div><div class="cv">
+HBsAg · anti-HBc (total) · anti-HBs<br>
+<strong>If anti-HBs ≥10 mIU/mL or chronic HBV infection known:</strong> No further HBV intervention needed<br>
+Also test source for HBsAg, anti-HBc, and anti-HBs when possible
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">HBV PEP — what to do based on vaccination status</div>
+<table class="ct">
+<tr><th>Exposed individual's HBV status</th><th>Source HBsAg</th><th>HBIG</th><th>Vaccination</th></tr>
+<tr><td class="reg">Documented response to complete vaccine series</td><td>Any</td><td>None needed</td><td>None needed</td></tr>
+<tr><td class="reg">Documented non-response after 2 vaccine series</td><td>Positive or unknown</td><td>2 doses HBIG 0.06 mL/kg IM × 1 month apart</td><td>Revaccinate with CpG-adjuvanted vaccine</td></tr>
+<tr><td class="reg">Response unknown after complete series</td><td>Positive or unknown</td><td>1 dose HBIG 0.06 mL/kg if anti-HBs &lt;10 mIU/mL</td><td>Revaccinate; check anti-HBs 1–2 months post-completion</td></tr>
+<tr><td class="reg">Not vaccinated / incomplete series / unknown status</td><td>Positive or unknown</td><td>1 dose HBIG 0.06 mL/kg IM</td><td>Complete vaccine series; check anti-HBs post-completion</td></tr>
+<tr><td class="reg">Not vaccinated / incomplete series</td><td>Negative</td><td>None</td><td>Complete vaccination series</td></tr>
+</table>
+<div class="wb blue">
+<strong>HBV vaccine:</strong> First dose within 24 hours of exposure — do not delay for triple panel results.<br>
+<strong>Standard 3-dose vaccine</strong> (Recombivax-HB, Engerix-B): 0, 1–2, 6 months<br>
+<strong>2-dose CpG-adjuvanted vaccine</strong> (Heplisav-B): 0 and 1 month — preferred for non-responders<br>
+<strong>HBIG:</strong> Administer within 7 days (ideally) and no later than 14 days post-exposure; at a different injection site from vaccine<br>
+HBV vaccination efficacy: 70–90% when initiated within 12–24 hours
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">HBV transmission risk context</div>
+<div class="cg" style="grid-template-columns:1fr 1fr">
+<div class="card acc-red"><div class="cl">HBV vs HIV needlestick risk</div><div class="cv">
+HBV needlestick risk: <strong>1%–31%</strong> depending on HBeAg status<br>
+• HBeAg positive: 22%–31%<br>
+• HBeAg negative: 1%–6%<br>
+HIV needlestick risk: 0.3%<br>
+HBV is substantially more infectious per needlestick than HIV
+</div></div>
+<div class="card acc-amber"><div class="cl">Fluids with meaningful HBV risk</div><div class="cv">
+Blood · Semen · Vaginal secretions · Amniotic fluid<br>
+Cerebrospinal, synovial, pleural, peritoneal, pericardial fluids<br>
+Human milk<br>
+<span class="tag tw">No meaningful risk:</span> Non-bloody saliva, sweat, tears, non-bloody urine/feces
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">HCV — key principles</div>
+<div class="cg" style="grid-template-columns:1fr">
+<div class="card acc-gray"><div class="cl">No effective PEP for HCV</div><div class="cv">
+<span class="tag tw">Do NOT administer immunoglobulin or antivirals prophylactically</span> — no benefit established.<br>
+HCV occupational needlestick risk: <strong>1.8%</strong> (vs 0.3% for HIV)<br>
+Highest risk: anal receptive intercourse and blood-to-blood contact<br>
+HCV is NOT transmitted via breast/chestfeeding, shared eating utensils, hugging, kissing, or coughing/sneezing
+</div></div>
+</div></div>
+
+<hr class="div">
+<div class="bl"><div class="blab">HCV — follow-up testing after exposure</div>
+<table class="ct">
+<tr><th>Timepoint</th><th>Test</th><th>Notes</th></tr>
+<tr><td class="reg">Baseline</td><td>HCV antibody (with reflex to HCV RNA if positive); LFTs</td><td>Source should be tested with HCV RNA (preferred) or HCV Ab</td></tr>
+<tr><td class="reg">3–6 weeks after exposure</td><td>HCV RNA</td><td>Detects acute HCV within 2 weeks of infection — before antibody seroconverts. Perform only if source has known HCV viremia or unknown status.</td></tr>
+<tr><td class="reg">4–6 months after exposure (weeks 24)</td><td>HCV antibody (reflex to HCV RNA if positive)</td><td>Final test. Coincides with HIV and HBV post-exposure testing if applicable. For immunocompromised: add HCV RNA at this visit.</td></tr>
+</table>
+<div class="wb teal">
+If HCV infection is identified at any point → refer promptly to HCV specialist. Direct-acting antivirals are highly effective for acute HCV, though optimal timing and duration remain under study. Observation for spontaneous resolution (8–12 weeks) is reasonable in select cases.
+</div></div>
+</div>
+`},
+
+
+{id:12,cat:'cat-mem',badge:'Memory Aid',bc:'b-purple',title:'Master memory framework',sub:'Complete algorithm in 10 anchors',content:`
+<div class="mem"><ol>
+<li><strong>Diagnose → full baseline workup:</strong> HIV RNA · CD4 · Genotype (RT+PR±INT) · HBsAg · HCV · HLA-B*5701 · STI · TB screen · Toxo/CrAg if CD4&lt;100</li>
+<li><strong>Start ART immediately</strong> for almost all patients (AI). Rapid initiation is the standard. Delay only for CNS OIs (cryptococcal meningitis 2–10 wk delay; TB meningitis ≥2 wk).</li>
+<li><strong>Default first-line: INSTI-based</strong><br>BIC/TAF/FTC (single tablet, AI) <em>or</em> DTG + TAF/FTC/TDF (AI) <em>or</em> DTG/3TC if RNA &lt;500k + no HBV + genotype available (AI)</li>
+<li><strong>Modify for key conditions:</strong><br>
+HBsAg+ → MUST include TDF/TAF + FTC/3TC (dual HBV coverage) <br>
+TB + rifampin → DTG 50mg BID or EFV 600mg (avoid BIC, PIs with rifampin)<br>
+eGFR &lt;30 → avoid TDF; use ABC (if HLA-B*5701 negative)<br>
+HLA-B*5701+ → absolute ABC contraindication<br>
+CAB-LA PrEP history → use DRV/r or DRV/c + 2 NRTIs pending INSTI genotype<br>
+CVD concern → avoid ABC (↑MI signal); prefer TDF over TAF (better lipids)</li>
+<li><strong>CD4 drives OI prophylaxis:</strong><br>
+&lt;200 → TMP-SMX for PCP (stop when CD4 ≥200 × 3 months)<br>
+&lt;100 + Toxo IgG+ → TMP-SMX also covers toxoplasmosis<br>
+&lt;50 → MAC prophylaxis (azithromycin weekly) ONLY if ART cannot start promptly<br>
+Any CD4 + IGRA/TST+ → treat LTBI (regimen per ARV interactions)</li>
+<li><strong>Pregnancy:</strong> ART immediately regardless of trimester. Preferred: BIC/TAF/FTC (Biktarvy®) or DTG + TDF/TAF + FTC/3TC. Both now recommended throughout pregnancy including T1. Avoid COBI, EFV in T1. VL at 36 weeks guides mode of delivery. Infant prophylaxis within 4–6 hours of birth.</li>
+<li><strong>IRIS:</strong> Any active OI + ART initiation → IRIS risk. Don't stop ART. Treat the OI. Steroids for moderate–severe TB-IRIS. LP for CM-IRIS ICP. Highest mortality in cryptococcal IRIS.</li>
+<li><strong>CV/Metabolic:</strong> REPRIEVE trial → pitavastatin for primary prevention even at low 10-year ASCVD risk. Weight gain signal with INSTIs (especially DTG) + TAF. TAF → worse bone/renal vs. TDF. Monitor DXA at 50+ years. HbA1c unreliable for DM diagnosis on ART.</li>
+<li><strong>Monitor viral load:</strong> 4–8 weeks post-start → target &lt;50 copies/mL. Then q3–6 months stable. Failure = VL &gt;200 confirmed. Blips (50–200) do not require regimen change automatically.</li>
+<li><strong>Virological failure → stepwise approach:</strong><br>
+1. Adherence + drug interactions + dosing<br>
+2. Resistance test ON-DRUG (while still on failing regimen)<br>
+3. No resistance → fix adherence, continue regimen<br>
+4. Resistance → boosted DRV + optimised NRTIs ± INSTI backbone<br>
+5. INSTI resistance → DRV-based backbone<br>
+6. Multi-class resistance → fostemsavir / ibalizumab / lenacapavir + HIV specialist</li>
+</ol></div>
+`}
+
+];
+
+function buildNav(){
+const nav=document.getElementById('nav');
+steps.forEach((s,i)=>{
+const b=document.createElement('button');
+b.className=`nb ${s.cat}${i===0?' active':''}`;
+b.textContent=s.badge;
+b.onclick=()=>activate(s.id,b);
+nav.appendChild(b);
+});
+}
+
+function buildPanels(){
+const c=document.getElementById('panels');
+steps.forEach((s,i)=>{
+const d=document.createElement('div');
+d.className=`panel${i===0?' active':''}`;
+d.id=`panel-${s.id}`;
+d.innerHTML=`<div class="ph"><span class="badge ${s.bc}">${s.badge}</span><div><div class="ptitle">${s.title}</div><div class="psub">${s.sub}</div></div></div>${s.content}`;
+c.appendChild(d);
+});
+}
+
+function activate(id,btn){
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+document.getElementById(`panel-${id}`).classList.add('active');
+btn.classList.add('active');
+}
+
+function showSub(btn,id){
+const parent=btn.closest('.panel');
+parent.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+btn.classList.add('active');
+const parent2=parent;
+parent2.querySelectorAll('.sp').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function showSub2(btn,id){
+const parent=btn.closest('.sp');
+parent.querySelectorAll('.stab2').forEach(t=>t.classList.remove('active'));
+btn.classList.add('active');
+parent.querySelectorAll('.sp2').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+buildNav();
+buildPanels();
+</script>
+</body>
+</html>
